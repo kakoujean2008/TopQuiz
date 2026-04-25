@@ -133,6 +133,18 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .diff-btn.active.easy{border-color:var(--green);color:var(--green);background:rgba(0,230,118,.08);}
 .diff-btn.active.normal{border-color:var(--gold);color:var(--gold);background:rgba(255,215,0,.08);}
 .diff-btn.active.hard{border-color:var(--red);color:var(--red);background:rgba(255,23,68,.08);}
+
+/* Mode infini toggle */
+.infinite-toggle{display:flex;align-items:center;justify-content:space-between;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .2s;margin-top:8px;}
+.infinite-toggle.active{border-color:var(--pink);background:rgba(255,45,120,.08);}
+.infinite-toggle-label{display:flex;flex-direction:column;gap:2px;}
+.infinite-toggle-title{font-size:14px;font-weight:800;color:var(--text);}
+.infinite-toggle-sub{font-size:11px;color:var(--muted);}
+.toggle-switch{width:40px;height:22px;background:var(--border);border-radius:100px;position:relative;transition:background .2s;}
+.toggle-switch.on{background:var(--pink);}
+.toggle-switch::after{content:'';position:absolute;left:3px;top:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .2s;}
+.toggle-switch.on::after{transform:translateX(18px);}
+
 .btn-launch{width:100%;padding:18px;background:linear-gradient(135deg,var(--pink),var(--purple));border:none;border-radius:14px;color:#fff;font-family:var(--font);font-size:16px;font-weight:800;cursor:pointer;transition:all .2s;margin-top:8px;box-shadow:0 4px 24px rgba(255,45,120,.3);}
 .btn-launch:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,45,120,.4);}
 .btn-back{width:100%;padding:13px;background:transparent;border:1.5px solid var(--border);border-radius:14px;color:var(--muted);font-family:var(--font);font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:10px;}
@@ -146,6 +158,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .quiz-score-live{font-family:var(--display);font-size:24px;letter-spacing:1px;color:var(--gold);}
 .quiz-progress{height:4px;background:var(--s2);border-radius:100px;margin-bottom:12px;}
 .quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--neon),var(--pink));border-radius:100px;transition:width .4s ease;}
+/* Infinite mode progress — pulse */
+.quiz-progress-fill.infinite-mode{animation:infinitePulse 2s ease-in-out infinite;}
+@keyframes infinitePulse{0%,100%{opacity:1;}50%{opacity:.5;}}
 .timer-wrap{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
 .timer-num{font-family:var(--display);font-size:42px;letter-spacing:2px;color:var(--neon);min-width:52px;transition:color .3s;}
 .timer-num.warn{color:var(--gold);}
@@ -161,6 +176,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 @keyframes freezePulse{0%,100%{box-shadow:0 0 8px rgba(255,215,0,.3);}50%{box-shadow:0 0 16px rgba(255,215,0,.6);}}
 .question-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;margin-bottom:16px;}
 .q-num-label{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+/* Badge infini mode */
+.infinite-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--pink);background:rgba(255,45,120,.1);border:1px solid rgba(255,45,120,.2);border-radius:100px;padding:3px 10px;margin-left:8px;}
 .q-text{font-size:clamp(15px,4vw,19px);font-weight:700;line-height:1.45;color:var(--text);}
 .options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
 @media(max-width:400px){.options-grid{grid-template-columns:1fr;}}
@@ -181,6 +198,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .btn-next{width:100%;padding:16px;background:linear-gradient(135deg,var(--neon),#0080ff);border:none;border-radius:14px;color:#000;font-family:var(--font);font-size:15px;font-weight:800;cursor:pointer;transition:all .2s;display:none;box-shadow:0 4px 20px rgba(0,240,255,.25);}
 .btn-next.show{display:block;}
 .btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,240,255,.35);}
+
+/* Bouton Terminer le quiz (mode infini) */
+.btn-end-infinite{width:100%;padding:13px;background:rgba(255,45,120,.08);border:1.5px solid rgba(255,45,120,.2);border-radius:14px;color:var(--pink);font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:8px;display:none;}
+.btn-end-infinite.show{display:block;}
+.btn-end-infinite:hover{background:rgba(255,45,120,.15);}
+
+/* Combo streak */
+.combo-badge{position:fixed;top:70px;right:16px;z-index:50;background:linear-gradient(135deg,var(--gold),#ff8c00);border-radius:100px;padding:8px 18px;font-size:14px;font-weight:800;color:#000;opacity:0;transform:translateY(-10px) scale(.8);transition:all .3s;pointer-events:none;}
+.combo-badge.show{opacity:1;transform:none;}
+
 .spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--neon);border-radius:50%;animation:spin .7s linear infinite;margin:20px auto;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .loading-msg{text-align:center;color:var(--muted);font-size:13px;font-weight:600;}
@@ -224,17 +251,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card);border:1px solid var(--green);border-radius:100px;padding:12px 24px;font-size:13px;font-weight:700;color:var(--green);opacity:0;transition:all .3s;z-index:300;white-space:nowrap;pointer-events:none;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* NOTIF BELL */
+/* NOTIF */
 .notif-bell{position:relative;display:inline-flex;align-items:center;justify-content:center;}
 .notif-dot{position:absolute;top:2px;right:2px;width:8px;height:8px;background:var(--pink);border-radius:50%;display:none;animation:pulse 1.5s infinite;}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
-.notif-panel{position:fixed;top:60px;right:12px;width:300px;max-height:380px;overflow-y:auto;background:var(--card);border:1px solid var(--border);border-radius:20px;z-index:300;display:none;box-shadow:0 20px 60px rgba(0,0,0,.6);animation:fadeUp .2s ease;}
-.notif-panel.open{display:block;}
+.notif-panel{position:fixed;top:60px;right:12px;width:300px;max-height:380px;overflow-y:auto;background:var(--card);border:1px solid var(--border);border-radius:20px;z-index:300;display:none;box-shadow:0 20px 60px rgba(0,0,0,.6);}
+.notif-panel.open{display:block;animation:fadeUp .2s ease;}
 .notif-hdr{padding:14px 18px;border-bottom:1px solid var(--border);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:space-between;}
-.notif-item{padding:12px 18px;border-bottom:1px solid var(--border);font-size:12px;line-height:1.5;cursor:pointer;}
+.notif-item{padding:12px 18px;border-bottom:1px solid var(--border);font-size:12px;line-height:1.5;}
 .notif-item.unread{border-left:3px solid var(--neon);}
 .notif-time{font-size:10px;color:var(--muted);margin-top:3px;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* CHAT */
 #chatPage{padding:0;}
@@ -269,20 +295,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .announce-text{font-size:13px;color:var(--muted);line-height:1.6;}
 .announce-date{font-size:11px;color:var(--muted);margin-top:8px;}
 
-/* ADMIN */
-#adminPage{padding:0;}
-.admin-wrap{max-width:520px;width:100%;margin:0 auto;padding:0 16px 90px;}
-.admin-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:14px;}
-.admin-title{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#ff6b35;margin-bottom:16px;}
-.admin-field{margin-bottom:12px;}
-.admin-field label{display:block;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.admin-field input,.admin-field textarea,.admin-field select{width:100%;padding:12px 14px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font);font-size:13px;font-weight:500;outline:none;transition:border-color .2s;resize:vertical;}
-.admin-field input:focus,.admin-field textarea:focus{border-color:#ff6b35;}
-.btn-admin{width:100%;padding:15px;background:linear-gradient(135deg,#ff6b35,#f72585);border:none;border-radius:12px;color:#fff;font-family:var(--font);font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;}
-.btn-admin:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,53,.4);}
-.btn-danger{background:linear-gradient(135deg,var(--red),#c00);}
-
-/* PROFILE PAGE */
+/* PROFILE */
 #profilePage{padding:0;}
 .profile-wrap{max-width:520px;width:100%;margin:0 auto;padding:0 16px 90px;}
 .profile-header-card{background:linear-gradient(135deg,rgba(0,240,255,.1),rgba(124,58,237,.1));border:1px solid rgba(0,240,255,.2);border-radius:24px;padding:28px 24px;margin-bottom:16px;text-align:center;}
@@ -299,16 +312,31 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .best-score-info span{font-size:14px;font-weight:700;color:var(--gold);}
 .streak-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,45,120,.1);border:1px solid rgba(255,45,120,.2);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:700;color:var(--pink);margin-top:8px;}
 
+/* ADMIN */
+#adminPage{padding:0;}
+.admin-wrap{max-width:520px;width:100%;margin:0 auto;padding:0 16px 90px;}
+.admin-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:14px;}
+.admin-title{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#ff6b35;margin-bottom:16px;}
+.admin-field{margin-bottom:12px;}
+.admin-field label{display:block;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.admin-field input,.admin-field textarea,.admin-field select{width:100%;padding:12px 14px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font);font-size:13px;font-weight:500;outline:none;transition:border-color .2s;resize:vertical;}
+.admin-field input:focus,.admin-field textarea:focus{border-color:#ff6b35;}
+.btn-admin{width:100%;padding:15px;background:linear-gradient(135deg,#ff6b35,#f72585);border:none;border-radius:12px;color:#fff;font-family:var(--font);font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;}
+.btn-admin:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,53,.4);}
+.btn-danger{background:linear-gradient(135deg,var(--red),#c00);}
+
 /* Push notif banner */
-.push-banner{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:400;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:100px;padding:12px 24px;font-size:13px;font-weight:700;color:#fff;box-shadow:0 8px 32px rgba(124,58,237,.5);display:none;animation:slideDown .3s ease;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;}
-.push-banner.show{display:block;}
+.push-banner{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:400;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:100px;padding:12px 24px;font-size:13px;font-weight:700;color:#fff;box-shadow:0 8px 32px rgba(124,58,237,.5);display:none;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;}
+.push-banner.show{display:block;animation:slideDown .3s ease;}
 @keyframes slideDown{from{transform:translateX(-50%) translateY(-20px);opacity:0;}to{transform:translateX(-50%) translateY(0);opacity:1;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 <div class="bg-fx"></div>
 <div class="toast" id="toast"></div>
 <div class="push-banner" id="pushBanner"></div>
+<div class="combo-badge" id="comboBadge">🔥 COMBO x2 !</div>
 
 <!-- LANDING -->
 <div class="page active" id="landingPage">
@@ -429,6 +457,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
           <button class="diff-btn hard" data-diff="hard" onclick="selectDiff(this)">💀 Expert</button>
         </div>
       </div>
+      <div class="setup-sec">
+        <div class="setup-sec-label">Mode</div>
+        <!-- Mode infini toggle -->
+        <div class="infinite-toggle" id="infiniteToggle" onclick="toggleInfiniteMode()">
+          <div class="infinite-toggle-label">
+            <div class="infinite-toggle-title">♾️ Mode Infini</div>
+            <div class="infinite-toggle-sub">Questions illimitées — jusqu'où peux-tu aller ?</div>
+          </div>
+          <div class="toggle-switch" id="infiniteSwitch"></div>
+        </div>
+        <div id="qCountRow" style="margin-top:10px;">
+          <div class="setup-sec-label" style="margin-bottom:6px;">Nombre de questions</div>
+          <div style="display:flex;gap:8px;">
+            <button class="diff-btn active" data-qcount="10" onclick="selectQCount(this)" id="qc10">10 🎯</button>
+            <button class="diff-btn" data-qcount="20" onclick="selectQCount(this)" id="qc20">20 🔥</button>
+            <button class="diff-btn" data-qcount="50" onclick="selectQCount(this)" id="qc50">50 💪</button>
+          </div>
+        </div>
+      </div>
       <button class="btn-launch" onclick="launchQuiz()">🚀 Lancer le quiz</button>
       <button class="btn-back" onclick="showPage('homePage')">← Retour</button>
     </div>
@@ -451,12 +498,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
       <button class="btn-freeze" id="freezeBtn" onclick="freezeChrono()">❄️ Bloquer le chrono</button>
     </div>
     <div class="question-card">
-      <div class="q-num-label" id="qNumLabel">Question 1 / 10</div>
+      <div class="q-num-label" id="qNumLabel">Question 1</div>
       <div class="q-text" id="qText">Chargement...</div>
     </div>
     <div class="options-grid" id="qOptions"></div>
     <div class="feedback-box" id="qFeedback"></div>
     <button class="btn-next" id="qNextBtn" onclick="nextQ()">Question suivante →</button>
+    <button class="btn-end-infinite" id="qEndInfiniteBtn" onclick="showResult()">🏁 Terminer le quiz</button>
     <div id="qLoading" style="display:none;"><div class="spinner"></div><div class="loading-msg">L'IA génère ta question... 🤖</div></div>
   </div>
 </div>
@@ -550,7 +598,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <div class="page" id="profilePage">
   <div class="profile-wrap">
     <div class="home-header" style="padding:20px 0 16px;">
-      <button class="btn-ghost" onclick="history.back();showPage(prevPage||'homePage')" style="font-size:13px;">← Retour</button>
+      <button class="btn-ghost" onclick="showPage(prevPage||'homePage')" style="font-size:13px;">← Retour</button>
       <div class="home-logo" style="font-size:20px;">👤 Profil</div>
     </div>
     <div class="profile-header-card">
@@ -632,21 +680,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <script>
 // ── CONFIG ──────────────────────────────────────────────────────
 const SMARTLINK  = 'https://omg10.com/4/10921151';
-const Q_COUNT    = 10;
+// 🔴 FIX PARRAINAGE : URL correcte du site
+const SITE_URL   = 'https://kakoujean2008.github.io/TopQuiz/';
 const TIMER_SEC  = 10;
 const BIN_ID     = '69ecf37a36566621a8ef076b';
 const MASTER_KEY = '$2a$10$a5RloqbsNDWK5G9sbWl6BuegdvgHPCVOI0stxKK0DcWnUSJ5nX83i';
 const JSONBIN    = 'https://api.jsonbin.io/v3/b';
-const SITE_URL   = 'https://kakoujean2008.github.io/';
 
-// ── ADMIN SECURITY — hash minimal (btoa double + reverse) ───────
-// Le mot de passe réel est "admin2024" — encodé ici pour ne pas apparaître en clair
-const _AP = atob('NDIwMm5pbWRh'.split('').reverse().join('')) // reverse of btoa("admin2024")
-  || (()=>{const s='admin2024';return btoa(s);})(); // fallback
-// On compare via une fonction pour éviter la string en clair
-function _checkAdminPass(input){
-  return btoa(input) === btoa('admin2024');
-}
+// ── QUIZ INFINI CONFIG ──────────────────────────────────────────
+// Mode infini : questions générées à l'infini par l'IA
+// La barre de progression pulse au lieu d'avancer
+let infiniteMode = false;
+let qCount = 10; // nombre de questions en mode normal
+let comboStreak = 0; // combo de bonnes réponses consécutives
 
 // ── JSONBIN HELPERS ─────────────────────────────────────────────
 const DEFAULT_BIN = {leaderboard:[],chat:[],announcements:[]};
@@ -656,7 +702,6 @@ async function fetchBin(){
     const r=await fetch(`${JSONBIN}/${BIN_ID}/latest`,{headers:{'X-Master-Key':MASTER_KEY}});
     const d=await r.json();
     const rec=d.record||{};
-    // 🔴 Fix 1 : initialisation sécurisée des clés
     if(!Array.isArray(rec.leaderboard)) rec.leaderboard=[];
     if(!Array.isArray(rec.chat)) rec.chat=[];
     if(!Array.isArray(rec.announcements)) rec.announcements=[];
@@ -665,7 +710,6 @@ async function fetchBin(){
 }
 
 async function updateBin(data){
-  // Garantir les clés avant chaque écriture
   if(!Array.isArray(data.leaderboard)) data.leaderboard=[];
   if(!Array.isArray(data.chat)) data.chat=[];
   if(!Array.isArray(data.announcements)) data.announcements=[];
@@ -706,22 +750,27 @@ const CATS = [
 ];
 
 const CHALLENGES = [
-  {title:'Le Marathon Rap FR',      desc:'10 questions Rap FR en mode Expert d\'affilée. T\'as le niveau ?', reward:500,cat:'rap',    diff:'hard'},
-  {title:'La Légende du Foot',      desc:'Prouve que tu es un vrai footeux avec 10 questions Expert !',        reward:500,cat:'foot',   diff:'hard'},
-  {title:'Otaku Confirmé',          desc:'10 questions anime Expert. Tu connais vraiment ?',                   reward:500,cat:'anime',  diff:'hard'},
-  {title:'Geek Supreme',            desc:'Gaming en mode Expert — montre qui tu es !',                         reward:500,cat:'gaming', diff:'hard'},
-  {title:'Binge Watcher Pro',       desc:'10 questions séries Expert. Netflix te connaît ?',                   reward:500,cat:'series', diff:'hard'},
-  {title:'Culture Générale Master', desc:'Culture générale Expert. Prouve que t\'es pas une crevette !',       reward:500,cat:'culture',diff:'hard'},
+  {title:'Le Marathon Rap FR',      desc:'10 questions Rap FR en mode Expert. T\'as le niveau ?', reward:500,cat:'rap',    diff:'hard'},
+  {title:'La Légende du Foot',      desc:'Prouve que tu es un vrai footeux avec 10 questions Expert !', reward:500,cat:'foot',   diff:'hard'},
+  {title:'Otaku Confirmé',          desc:'10 questions anime Expert. Tu connais vraiment ?',       reward:500,cat:'anime',  diff:'hard'},
+  {title:'Geek Supreme',            desc:'Gaming en mode Expert — montre qui tu es !',              reward:500,cat:'gaming', diff:'hard'},
+  {title:'Binge Watcher Pro',       desc:'10 questions séries Expert. Netflix te connaît ?',        reward:500,cat:'series', diff:'hard'},
+  {title:'Culture Générale Master', desc:'Culture générale Expert. T\'es pas une crevette !',       reward:500,cat:'culture',diff:'hard'},
 ];
 
+// Fallback questions si l'IA ne répond pas
 const FALLBACK = {
   rap:[
     {q:"Qui a sorti l'album 'Jefe' ?",opts:["Ninho","Freeze Corleone","Booba","SCH"],a:1,note:"Freeze Corleone est connu pour son style énigmatique."},
     {q:"De quelle ville vient Jul ?",opts:["Paris","Lyon","Marseille","Nice"],a:2,note:"Jul est l'icône du rap marseillais."},
-    {q:"Quel duo forme PNL ?",opts:["Ninho & Heuss","Ademo & N.O.S","Jul & SCH","Kaaris & Booba"],a:1,note:"Ademo et N.O.S sont frères dans la vraie vie."},
+    {q:"Quel duo forme PNL ?",opts:["Ninho & Heuss","Ademo & N.O.S","Jul & SCH","Kaaris & Booba"],a:1,note:"Ademo et N.O.S sont frères."},
     {q:"Qui a créé le label Hostile ?",opts:["Booba","La Fouine","Rohff","Kaaris"],a:0,note:"Booba a fondé Hostile Records."},
     {q:"Quel est le vrai prénom d'Orelsan ?",opts:["Aurélien","Olivier","Laurent","Nicolas"],a:1,note:"Olivier Self est né à Alençon."},
-    {q:"Quel rappeur s'appelle en vrai Aurélien Cotentin ?",opts:["Ninho","Freeze Corleone","Hamza","Jul"],a:1,note:"Freeze Corleone reste mystérieux."},
+    {q:"SCH vient de quelle ville ?",opts:["Paris","Lyon","Marseille","Nice"],a:2,note:"SCH est un pilier du rap marseillais."},
+    {q:"Quel rappeur s'appelle en vrai Aurélien Cotentin ?",opts:["Ninho","Orelsan","Hamza","Jul"],a:1,note:"Orelsan de son vrai nom Olivier Self."},
+    {q:"Quel est le surnom de Damso ?",opts:["L'Architecte","Le Sombre","BVCKVARD","Aulnay Boys"],a:2,note:"BVCKVARD est son surnom."},
+    {q:"Qui est derrière le label Panenka ?",opts:["Ninho","Hamza","Rsko","Naps"],a:1,note:"Hamza a créé le label Panenka."},
+    {q:"Quel album de Ninho s'intitule 'M.I.L.S 3.0' ?",opts:["2018","2019","2020","2021"],a:2,note:"M.I.L.S 3.0 est sorti en 2020."},
   ],
   foot:[
     {q:"Combien de Ballons d'Or possède Messi ?",opts:["6","7","8","9"],a:2,note:"Messi détient le record avec 8 Ballons d'Or."},
@@ -729,6 +778,9 @@ const FALLBACK = {
     {q:"En quelle année la France a gagné le Mondial ?",opts:["1994","1998","2002","2006"],a:1,note:"France 98 avec Zidane en héros !"},
     {q:"Qui est le meilleur buteur en Ligue 1 all-time ?",opts:["Thierry Henry","Pauleta","Zlatan","Papin"],a:2,note:"Zlatan a marqué 156 buts en L1."},
     {q:"Dans quel club évolue Mbappé depuis 2024 ?",opts:["PSG","Man City","Real Madrid","Bayern"],a:2,note:"Mbappé a rejoint le Real Madrid en 2024."},
+    {q:"Quel est le record de buts en une saison de Cristiano Ronaldo ?",opts:["60","65","69","72"],a:2,note:"Ronaldo a marqué 69 buts en 2011-12."},
+    {q:"Combien de Ligue des Champions a gagné le Real Madrid ?",opts:["12","13","14","15"],a:3,note:"Le Real Madrid a remporté 15 LDC."},
+    {q:"Quel pays a remporté la Coupe du Monde 2022 ?",opts:["France","Brésil","Argentine","Allemagne"],a:2,note:"L'Argentine a battu la France aux tirs au but."},
   ],
   anime:[
     {q:"Qui crée One Piece ?",opts:["Akira Toriyama","Eiichiro Oda","Tite Kubo","Kishimoto"],a:1,note:"Oda dessine One Piece depuis 1997."},
@@ -736,6 +788,8 @@ const FALLBACK = {
     {q:"Dans Death Note, quel est le vrai nom de 'L' ?",opts:["L Lawliet","Light Yagami","Near","Mello"],a:0,note:"L Lawliet, le détective mystérieux."},
     {q:"Quel est le domaine de Gojo dans Jujutsu Kaisen ?",opts:["Technique Infinie","Vide Infini","Malédiction Sombre","Frappe Certaine"],a:1,note:"Le Vide Infini est redoutable."},
     {q:"Quel est le pouvoir de Naruto en mode Ermite ?",opts:["Chakra naturel","Sharingan","Rasengan","Byakugan"],a:0,note:"Le Mode Ermite amplifie toutes les techniques."},
+    {q:"Dans Bleach, quel est le nom de l'épée de Ichigo ?",opts:["Zangetsu","Senbonzakura","Hyorinmaru","Zabimaru"],a:0,note:"Zangetsu, le tueur de lune."},
+    {q:"Qui est le rival principal de Naruto ?",opts:["Gaara","Sasuke","Kakashi","Pain"],a:1,note:"Sasuke Uchiha est le rival mythique de Naruto."},
   ],
   series:[
     {q:"Combien de saisons compte La Casa de Papel ?",opts:["3","4","5","6"],a:2,note:"La série s'est terminée en 2021."},
@@ -743,6 +797,8 @@ const FALLBACK = {
     {q:"Qui joue Walter White dans Breaking Bad ?",opts:["Bryan Cranston","Aaron Paul","Bob Odenkirk","Jonathan Banks"],a:0,note:"4 Emmy Awards pour Bryan Cranston."},
     {q:"Dans Squid Game, quel est le numéro du héros ?",opts:["001","067","456","218"],a:2,note:"Seong Gi-hun porte le 456."},
     {q:"Quelle plateforme a produit 'Wednesday' ?",opts:["Disney+","Amazon","Netflix","Apple TV+"],a:2,note:"Jenna Ortega incarne Wednesday."},
+    {q:"Dans Game of Thrones, qui dit 'Winter is coming' ?",opts:["Jon Snow","Ned Stark","Daenerys","Tyrion"],a:1,note:"La devise de la maison Stark."},
+    {q:"Dans Lupin, qui joue Assane Diop ?",opts:["Idris Elba","Omar Sy","Romain Duris","Tahar Rahim"],a:1,note:"Omar Sy est magnifique dans ce rôle."},
   ],
   gaming:[
     {q:"Dans Fortnite, combien de joueurs par partie BR ?",opts:["50","75","100","150"],a:2,note:"100 joueurs jusqu'au dernier survivant."},
@@ -750,6 +806,8 @@ const FALLBACK = {
     {q:"Combien de Pokémon dans la 1ère gen ?",opts:["100","151","152","250"],a:1,note:"De Bulbizarre à Mew, 151 Pokémon."},
     {q:"Dans LoL, quel est l'objectif principal ?",opts:["Tuer le plus","Détruire le Nexus","Capturer bases","Survivre"],a:1,note:"Détruire le Nexus ennemi pour gagner."},
     {q:"Quel personnage joue-t-on dans Halo ?",opts:["Master Chief","Shepard","Doomguy","Marcus Fenix"],a:0,note:"Master Chief est l'icône Xbox."},
+    {q:"Quel studio développe Call of Duty : Modern Warfare ?",opts:["Treyarch","Infinity Ward","Sledgehammer","Raven"],a:1,note:"Infinity Ward est le studio original de COD."},
+    {q:"Dans Minecraft, quel est le boss final ?",opts:["Creeper","Wither","Ender Dragon","Elder Guardian"],a:2,note:"L'Ender Dragon réside dans The End."},
   ],
   culture:[
     {q:"Quelle est la capitale de l'Australie ?",opts:["Sydney","Melbourne","Canberra","Brisbane"],a:2,note:"Canberra est la capitale, pas Sydney !"},
@@ -757,6 +815,8 @@ const FALLBACK = {
     {q:"Combien de côtés a un hexagone ?",opts:["5","6","7","8"],a:1,note:"Hexa = 6 en grec."},
     {q:"Quel est le pays le plus grand du monde ?",opts:["Canada","USA","Chine","Russie"],a:3,note:"La Russie s'étend sur 17 millions de km²."},
     {q:"En quelle année a eu lieu la Révolution Française ?",opts:["1789","1776","1804","1815"],a:0,note:"1789, prise de la Bastille."},
+    {q:"Quelle est la langue la plus parlée au monde ?",opts:["Anglais","Mandarin","Espagnol","Hindi"],a:1,note:"Le mandarin est la langue maternelle de 1,1 milliard de personnes."},
+    {q:"Combien d'os compte le corps humain adulte ?",opts:["186","206","226","246"],a:1,note:"206 os chez l'adulte."},
   ],
   sport:[
     {q:"Combien de joueurs dans une équipe de basket ?",opts:["4","5","6","7"],a:1,note:"5 joueurs par équipe sur le terrain."},
@@ -764,6 +824,7 @@ const FALLBACK = {
     {q:"Quel sport se joue dans une piscine avec un ballon ?",opts:["Water-polo","Nage synchro","Plongeon","Kayak polo"],a:0,note:"Le water-polo est un sport olympique historique."},
     {q:"Combien de sets dans un match Grand Chelem homme ?",opts:["3","4","5","6"],a:2,note:"Les Grands Chelems hommes se jouent en 5 sets."},
     {q:"Quel pays a le plus de médailles olympiques all-time ?",opts:["URSS","Chine","UK","USA"],a:3,note:"Les USA dominent le classement historique."},
+    {q:"En athlétisme, quelle est la distance du marathon ?",opts:["40,195 km","42,195 km","44,195 km","45 km"],a:1,note:"42,195 km, depuis les JO de 1908."},
   ],
   histoire:[
     {q:"En quelle année a commencé la 2ème Guerre Mondiale ?",opts:["1935","1937","1939","1941"],a:2,note:"Le 1er septembre 1939."},
@@ -771,6 +832,7 @@ const FALLBACK = {
     {q:"Qui a construit les pyramides de Gizeh ?",opts:["Romains","Grecs","Mésopotamiens","Égyptiens"],a:3,note:"Les Égyptiens antiques, environ 2 500 av. J-C."},
     {q:"En quelle année est tombé le mur de Berlin ?",opts:["1987","1989","1991","1993"],a:1,note:"Le 9 novembre 1989."},
     {q:"Napoléon Bonaparte était... ?",opts:["Roi de France","Président","Général et Empereur","Duc"],a:2,note:"Napoléon est devenu Empereur en 1804."},
+    {q:"Quelle civilisation a créé les Jeux Olympiques ?",opts:["Romains","Égyptiens","Grecs","Perses"],a:2,note:"Les premiers JO ont eu lieu à Olympie en 776 av. J-C."},
   ],
   science:[
     {q:"Quelle est la formule chimique de l'eau ?",opts:["HO","H2O","H3O","OH2"],a:1,note:"2H + O = H₂O."},
@@ -778,6 +840,7 @@ const FALLBACK = {
     {q:"Qui a découvert la pénicilline ?",opts:["Marie Curie","Pasteur","Fleming","Einstein"],a:2,note:"Alexander Fleming, 1928."},
     {q:"Quelle est (approx.) la vitesse de la lumière ?",opts:["150 000 km/s","300 000 km/s","450 000 km/s","600 000 km/s"],a:1,note:"299 792 km/s."},
     {q:"Quel est le symbole chimique de l'or ?",opts:["Or","Go","Au","Ag"],a:2,note:"Au vient du latin 'Aurum'."},
+    {q:"Quelle planète est surnommée la planète rouge ?",opts:["Vénus","Jupiter","Mars","Saturne"],a:2,note:"Mars tire sa couleur de l'oxyde de fer."},
   ],
   geo:[
     {q:"Quel est le plus long fleuve du monde ?",opts:["Amazone","Mississippi","Nil","Yangtsé"],a:2,note:"Le Nil s'étend sur 6 650 km."},
@@ -785,6 +848,7 @@ const FALLBACK = {
     {q:"Quelle est la montagne la plus haute du monde ?",opts:["K2","Mont Blanc","Everest","Kilimandjaro"],a:2,note:"L'Everest culmine à 8 849 m."},
     {q:"Dans quel pays se trouve le Machu Picchu ?",opts:["Brésil","Colombie","Pérou","Équateur"],a:2,note:"Le Machu Picchu au Pérou, construit par les Incas."},
     {q:"Quelle mer sépare l'Europe de l'Afrique ?",opts:["Mer Rouge","Mer Noire","Méditerranée","Mer Caspienne"],a:2,note:"La Méditerranée baigne 21 pays."},
+    {q:"Quel est le plus grand désert du monde ?",opts:["Sahara","Gobi","Antarctique","Arabie"],a:2,note:"L'Antarctique est techniquement le plus grand désert froid."},
   ],
 };
 
@@ -805,16 +869,33 @@ let isChallenge  = false;
 let dailyChallenge = null;
 let prevPage     = 'homePage';
 
-// ── STORAGE (local — auth + profil seulement) ────────────────────
+// ── INFINITE MODE ───────────────────────────────────────────────
+function toggleInfiniteMode(){
+  infiniteMode = !infiniteMode;
+  const toggle = document.getElementById('infiniteToggle');
+  const sw = document.getElementById('infiniteSwitch');
+  const qcRow = document.getElementById('qCountRow');
+  toggle.classList.toggle('active', infiniteMode);
+  sw.classList.toggle('on', infiniteMode);
+  qcRow.style.display = infiniteMode ? 'none' : 'block';
+}
+
+function selectQCount(btn){
+  document.querySelectorAll('[data-qcount]').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  qCount = parseInt(btn.dataset.qcount);
+}
+
+// ── STORAGE ─────────────────────────────────────────────────────
 function getUsers(){ try{ return JSON.parse(localStorage.getItem('qz_users')||'{}'); }catch(e){ return {}; } }
 function saveUsers(u){ localStorage.setItem('qz_users', JSON.stringify(u)); }
 function getUser(n){ return getUsers()[n.toLowerCase()]||null; }
 function saveUser(u){ const all=getUsers(); all[u.name.toLowerCase()]=u; saveUsers(all); if(currentUser&&u.name.toLowerCase()===currentUser.name.toLowerCase()){ localStorage.setItem('qz_sess',u.name.toLowerCase()); } }
 
-// ── GLOBAL LEADERBOARD (JSONbin uniquement) ─────────────────────
+// ── LEADERBOARD ─────────────────────────────────────────────────
 async function renderGlobalLeaderboard(){
   const lbDiv=document.getElementById('lbList');
-  lbDiv.innerHTML='<div style="text-align:center;color:var(--muted);padding:20px;font-size:13px;">⏳ Chargement du classement mondial...</div>';
+  lbDiv.innerHTML='<div style="text-align:center;color:var(--muted);padding:20px;font-size:13px;">⏳ Chargement...</div>';
   const data=await fetchBin();
   const lb=data.leaderboard.slice(0,10);
   const medals=['gold','silver','bronze'];
@@ -830,7 +911,6 @@ async function renderGlobalLeaderboard(){
       </div>`).join('');
 }
 
-// 🔴 Fix 3 : pas de doublons — identifié par pseudo en minuscules
 async function saveScoreGlobal(){
   if(!currentUser||score===0) return;
   const data=await fetchBin();
@@ -840,17 +920,13 @@ async function saveScoreGlobal(){
   const entry={
     name:currentUser.name,
     score:currentUser.totalPts,
-    questions:currentUser.bestScores?Object.keys(currentUser.bestScores).length:0,
+    questions:currentUser.quizCount||0,
     bestScores:currentUser.bestScores||{},
     streak:currentUser.streak||0,
     date:new Date().toLocaleDateString('fr-FR')
   };
-  if(idx>=0){
-    // Mise à jour uniquement si le score est meilleur
-    if(entry.score>=(lb[idx].score||0)) lb[idx]=entry;
-  } else {
-    lb.push(entry);
-  }
+  if(idx>=0){ if(entry.score>=(lb[idx].score||0)) lb[idx]=entry; }
+  else { lb.push(entry); }
   lb.sort((a,b)=>(b.score||0)-(a.score||0));
   await updateBin({...data,leaderboard:lb.slice(0,50)});
 }
@@ -865,12 +941,20 @@ function showPage(id){
 }
 function navTo(id){ document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active')); const el=document.getElementById(id); if(el) el.classList.add('active'); }
 function goAuth(){ showPage('authPage'); }
-
-// Escape HTML pour éviter XSS dans les messages/pseudos
 function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 // ── TOAST ───────────────────────────────────────────────────────
 function toast(msg,ms=2500){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),ms); }
+
+// ── COMBO BADGE ─────────────────────────────────────────────────
+function showCombo(streak){
+  const b=document.getElementById('comboBadge');
+  const msgs=[,'','','🔥 COMBO x3 !','💥 COMBO x4 !','⚡ COMBO x5 !','🌟 COMBO x6 !','🚀 UNSTOPPABLE x7 !'];
+  if(streak<3) return;
+  b.textContent=msgs[streak]||`🏆 COMBO x${streak} !`;
+  b.classList.add('show');
+  setTimeout(()=>b.classList.remove('show'),2000);
+}
 
 // ── AUTH ────────────────────────────────────────────────────────
 function switchAuthTab(mode){
@@ -897,7 +981,8 @@ function handleAuth(){
     if(getUser(name)){ err.textContent='Ce pseudo est déjà pris !'; err.style.display='block'; return; }
     const params=new URLSearchParams(window.location.search);
     const refBy=params.get('ref')||null;
-    const u={ name, pass, totalPts:0, streak:0, lastVisit:'', bestScores:{}, quizCount:0, createdAt:Date.now(), refCode:btoa(name).replace(/[^a-zA-Z0-9]/g,'').slice(0,8), refBy, refCount:0 };
+    const refCode=btoa(name).replace(/[^a-zA-Z0-9]/g,'').slice(0,8);
+    const u={ name, pass, totalPts:0, streak:0, lastVisit:'', bestScores:{}, quizCount:0, createdAt:Date.now(), refCode, refBy, refCount:0 };
     saveUser(u);
     if(refBy){ const inviter=getUser(refBy); if(inviter){ inviter.totalPts+=50; inviter.refCount=(inviter.refCount||0)+1; saveUser(inviter); } }
     currentUser=u;
@@ -912,8 +997,6 @@ function handleAuth(){
   enterHome();
 }
 
-function logout(){ currentUser=null; localStorage.removeItem('qz_sess'); showPage('landingPage'); }
-
 function updateStreak(){
   const today=new Date().toDateString();
   const yesterday=new Date(Date.now()-86400000).toDateString();
@@ -924,7 +1007,7 @@ function updateStreak(){
 }
 
 // ── HOME ────────────────────────────────────────────────────────
-function enterHome(){ renderHome(); showPage('homePage'); renderSetupCats(); }
+function enterHome(){ renderHome(); showPage('homePage'); renderSetupCats(); startPushPolling(); }
 
 function renderHome(){
   if(!currentUser) return;
@@ -933,7 +1016,9 @@ function renderHome(){
   document.getElementById('homeUserPts').textContent=currentUser.totalPts+' pts';
   document.getElementById('homeStreak').textContent=(currentUser.streak||1)+' jour'+((currentUser.streak||1)>1?'s':'')+' de suite';
   document.getElementById('homeTotalPts').textContent=currentUser.totalPts;
-  document.getElementById('referralLink').textContent='kakoujean2008.github.io/?ref='+currentUser.refCode;
+  // 🔴 FIX PARRAINAGE : lien avec le bon domaine
+  const refLink = SITE_URL + '?ref=' + currentUser.refCode;
+  document.getElementById('referralLink').textContent=refLink;
   pickChallenge();
   const g=document.getElementById('catGrid');
   g.innerHTML=CATS.map(c=>`<div class="cat-card" onclick="quickPlay('${c.id}')"><div class="cat-icon">${c.emoji}</div><div class="cat-name">${c.label}</div><div class="cat-count">Quiz illimités 🤖</div></div>`).join('');
@@ -950,7 +1035,10 @@ function pickChallenge(){
   document.getElementById('landingChallengeReward').textContent='🏆 +'+dailyChallenge.reward+' pts bonus';
 }
 
-function copyReferral(){ navigator.clipboard.writeText('https://kakoujean2008.github.io/?ref='+currentUser.refCode).then(()=>toast('✅ Lien copié !')); }
+function copyReferral(){
+  const refLink = SITE_URL + '?ref=' + currentUser.refCode;
+  navigator.clipboard.writeText(refLink).then(()=>toast('✅ Lien copié !'));
+}
 
 // ── SETUP ───────────────────────────────────────────────────────
 function renderSetupCats(){
@@ -958,15 +1046,19 @@ function renderSetupCats(){
   currentCat=CATS[0].id;
 }
 function selectCat(btn){ document.querySelectorAll('.setup-cat').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); currentCat=btn.dataset.cat; }
-function selectDiff(btn){ document.querySelectorAll('.diff-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); currentDiff=btn.dataset.diff; }
-function quickPlay(cat){ currentCat=cat; currentDiff='normal'; isChallenge=false; startQuiz(); }
+function selectDiff(btn){ document.querySelectorAll('.diff-btn:not([data-qcount])').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); currentDiff=btn.dataset.diff; }
+function quickPlay(cat){ currentCat=cat; currentDiff='normal'; isChallenge=false; infiniteMode=false; startQuiz(); }
 function launchQuiz(){ isChallenge=false; startQuiz(); }
-function startChallenge(){ if(!currentUser){ goAuth(); return; } isChallenge=true; currentCat=dailyChallenge.cat; currentDiff=dailyChallenge.diff; startQuiz(); }
+function startChallenge(){ if(!currentUser){ goAuth(); return; } isChallenge=true; currentCat=dailyChallenge.cat; currentDiff=dailyChallenge.diff; infiniteMode=false; qCount=10; startQuiz(); }
 
 // ── QUIZ ENGINE ─────────────────────────────────────────────────
 async function startQuiz(){
-  questions=[]; currentQ=0; score=0; correctCount=0; frozenUsed=false;
+  questions=[]; currentQ=0; score=0; correctCount=0; frozenUsed=false; comboStreak=0;
   showPage('quizPage');
+  // Mode infini : barre de progression pulse
+  document.getElementById('qProgressFill').className = 'quiz-progress-fill' + (infiniteMode?' infinite-mode':'');
+  // Afficher le bouton "Terminer" uniquement en mode infini
+  document.getElementById('qEndInfiniteBtn').className = 'btn-end-infinite' + (infiniteMode?' show':'');
   await loadQ();
 }
 
@@ -980,8 +1072,16 @@ async function loadQ(){
   document.getElementById('freezeBtn').disabled=false;
   document.getElementById('freezeBtn').style.opacity='1';
   document.getElementById('qLoading').style.display='none';
-  document.getElementById('qProgressFill').style.width=((currentQ/Q_COUNT)*100)+'%';
-  document.getElementById('qNumLabel').textContent='Question '+(currentQ+1)+' / '+Q_COUNT;
+
+  // Progress bar
+  if(!infiniteMode){
+    document.getElementById('qProgressFill').style.width=((currentQ/qCount)*100)+'%';
+    document.getElementById('qNumLabel').textContent='Question '+(currentQ+1)+' / '+qCount;
+  } else {
+    // En mode infini, montrer Q∞ et le score
+    document.getElementById('qNumLabel').innerHTML='Question '+(currentQ+1)+' <span class="infinite-badge">♾️ INFINI</span>';
+    document.getElementById('qProgressFill').style.width='100%';
+  }
   document.getElementById('qScoreLive').textContent=score+' pts';
   const cat=CATS.find(c=>c.id===currentCat)||CATS[0];
   document.getElementById('qCatBadge').textContent=cat.emoji+' '+cat.label;
@@ -996,25 +1096,32 @@ async function fetchQ(){
   document.getElementById('qText').textContent='';
   const catLabel=CATS.find(c=>c.id===currentCat)?.label||currentCat;
   const diffLabel={easy:'facile',normal:'intermédiaire',hard:'difficile'}[currentDiff]||'intermédiaire';
-  const prevQs=questions.filter(Boolean).map(q=>q.q).join(' | ');
-  const prompt=`Tu es un générateur de quiz en français pour des jeunes français (15-25 ans).
-Génère UNE question sur le thème : "${catLabel}", niveau ${diffLabel}.
-${prevQs?'Ne répète pas ces questions : '+prevQs:''}
-Réponds UNIQUEMENT en JSON valide sans markdown :
-{"q":"question","opts":["A","B","C","D"],"a":0,"note":"anecdote courte"}
+  // Envoyer les 10 dernières questions pour éviter répétitions
+  const prevQs=questions.filter(Boolean).slice(-10).map(q=>q.q).join(' | ');
+  const prompt=`Tu es un générateur de quiz en français pour des jeunes français (15-25 ans) passionnés par la culture pop, le sport, les jeux vidéo, la musique, les séries et les animes.
+Génère UNE question originale, amusante et inédite sur le thème : "${catLabel}", niveau ${diffLabel}.
+${prevQs?`IMPORTANT: Ne répète PAS et ne ressemble PAS à ces questions déjà posées : ${prevQs}`:''}
+Règles strictes :
+- Question claire et précise, adaptée au niveau ${diffLabel}
+- 4 réponses plausibles (pas de réponse évidente)
+- Une seule bonne réponse
+- Anecdote courte et intéressante (max 15 mots)
+Réponds UNIQUEMENT en JSON valide sans markdown ni backticks :
+{"q":"question ici","opts":["Choix A","Choix B","Choix C","Choix D"],"a":0,"note":"anecdote courte ici"}
 "a" = index 0-3 de la bonne réponse.`;
 
   try{
     const raw=await askClaude(prompt);
     const clean=raw.replace(/```json|```/g,'').trim();
     const parsed=JSON.parse(clean);
-    if(parsed.q&&parsed.opts&&parsed.opts.length===4&&typeof parsed.a==='number'){
+    if(parsed.q&&parsed.opts&&parsed.opts.length===4&&typeof parsed.a==='number'&&parsed.a>=0&&parsed.a<=3){
       document.getElementById('qLoading').style.display='none';
       return parsed;
     }
-    throw new Error('bad');
+    throw new Error('bad format');
   }catch(e){
     document.getElementById('qLoading').style.display='none';
+    // Fallback local — éviter les répétitions
     const pool=FALLBACK[currentCat]||FALLBACK.culture;
     const used=questions.filter(Boolean).map(q=>q.q);
     const avail=pool.filter(q=>!used.includes(q.q));
@@ -1023,13 +1130,11 @@ Réponds UNIQUEMENT en JSON valide sans markdown :
   }
 }
 
-// 🟡 Fix 5 : les options ne contiennent PAS d'attribut data-answer visible
 function renderQ(q){
   document.getElementById('qText').textContent=q.q;
   const letters=['A','B','C','D'];
-  // L'index correct est stocké dans la closure JS, pas dans le DOM
   document.getElementById('qOptions').innerHTML=q.opts.map((o,i)=>
-    `<button class="opt-btn" onclick="selectAns(${i})"><span class="opt-letter">${letters[i]}</span><span class="opt-text">${escHtml(o)}</span></button>`
+    `<button class="opt-btn" onclick="selectAns(${i})"><span class="opt-letter">${letters[i]}</span><span>${escHtml(o)}</span></button>`
   ).join('');
   startTimer();
 }
@@ -1067,11 +1172,17 @@ function freezeChrono(){
 function timeOut(){
   answered=true;
   clearInterval(timerInt);
+  comboStreak=0; // reset combo en cas de timeout
   const q=questions[currentQ];
   highlightAns(-1,q.a);
   showFB(false,'⏱️ Temps écoulé ! C\'était : '+q.opts[q.a]);
   document.getElementById('freezeBtn').style.display='none';
-  setTimeout(showFail,800);
+  // En mode infini, ne pas afficher le fail overlay → juste continuer
+  if(infiniteMode){
+    document.getElementById('qNextBtn').classList.add('show');
+  } else {
+    setTimeout(showFail,800);
+  }
 }
 
 function selectAns(idx){
@@ -1082,17 +1193,28 @@ function selectAns(idx){
   const q=questions[currentQ];
   const ok=idx===q.a;
   if(ok){
+    comboStreak++;
     const mult={easy:1,normal:2,hard:3}[currentDiff]||1;
-    const pts=(100*mult)+Math.max(0,timeLeft*5);
+    // Bonus combo : +10% par question consécutive correcte (plafonné à x2)
+    const comboMult=Math.min(2, 1+(comboStreak-1)*0.1);
+    const pts=Math.round((100*mult+Math.max(0,timeLeft*5))*comboMult);
     score+=pts; correctCount++;
     document.getElementById('qScoreLive').textContent=score+' pts';
     highlightAns(idx,q.a);
-    showFB(true,'✅ '+(q.note||q.anecdote||'Bonne réponse !'));
+    const noteText=q.note||q.anecdote||'';
+    showFB(true,'✅ +'+pts+' pts !'+(noteText?' · '+noteText:''));
+    showCombo(comboStreak);
     document.getElementById('qNextBtn').classList.add('show');
   } else {
+    comboStreak=0; // reset combo
     highlightAns(idx,q.a);
     showFB(false,'❌ Raté ! La bonne réponse : '+q.opts[q.a]);
-    setTimeout(showFail,800);
+    // En mode infini : pas de fail, on continue
+    if(infiniteMode){
+      document.getElementById('qNextBtn').classList.add('show');
+    } else {
+      setTimeout(showFail,800);
+    }
   }
 }
 
@@ -1108,11 +1230,16 @@ function showFB(ok,msg){
 
 async function nextQ(){
   currentQ++;
-  if(currentQ>=Q_COUNT) showResult();
-  else await loadQ();
+  // En mode normal : s'arrêter quand on atteint qCount
+  if(!infiniteMode && currentQ>=qCount){
+    showResult();
+    return;
+  }
+  // En mode infini : toujours continuer, génère la prochaine question
+  await loadQ();
 }
 
-// ── FAIL BUBBLE ─────────────────────────────────────────────────
+// ── FAIL BUBBLE (mode normal seulement) ─────────────────────────
 function showFail(){ document.getElementById('failOverlay').classList.add('show'); }
 
 function continueAfterAd(){
@@ -1130,19 +1257,30 @@ function abandonQuiz(){ document.getElementById('failOverlay').classList.remove(
 function showResult(){
   clearInterval(timerInt);
   document.getElementById('failOverlay').classList.remove('show');
-  const pct=Math.round((correctCount/Q_COUNT)*100);
+  const total=currentQ; // nombre de questions répondues
+  const pct=total>0?Math.round((correctCount/total)*100):0;
   let emoji='😅',title='PEUT MIEUX FAIRE';
-  if(pct>=90){emoji='🏆';title='LÉGENDAIRE !';}
-  else if(pct>=70){emoji='🔥';title='TU DÉCHIRES !';}
-  else if(pct>=50){emoji='😎';title='BIEN JOUÉ !';}
-  else if(pct>=30){emoji='😬';title='PEUT MIEUX FAIRE';}
-  else{emoji='💀';title='GAME OVER';}
+  if(infiniteMode){
+    // En mode infini, juge selon le nombre de questions
+    if(total>=50){emoji='🌌';title='LÉGENDAIRE !';}
+    else if(total>=30){emoji='🏆';title='INCROYABLE !';}
+    else if(total>=20){emoji='🔥';title='TU DÉCHIRES !';}
+    else if(total>=10){emoji='😎';title='PAS MAL !';}
+    else{emoji='😬';title='T\'ES CHAUD ?';}
+  } else {
+    if(pct>=90){emoji='🏆';title='LÉGENDAIRE !';}
+    else if(pct>=70){emoji='🔥';title='TU DÉCHIRES !';}
+    else if(pct>=50){emoji='😎';title='BIEN JOUÉ !';}
+    else if(pct>=30){emoji='😬';title='PEUT MIEUX FAIRE';}
+    else{emoji='💀';title='GAME OVER';}
+  }
   document.getElementById('resEmoji').textContent=emoji;
   document.getElementById('resTitle').textContent=title;
   const catLabel=CATS.find(c=>c.id===currentCat)?.label||currentCat;
-  document.getElementById('resSub').textContent=correctCount+'/'+Q_COUNT+' bonnes réponses · '+catLabel;
+  const modeTxt=infiniteMode?'♾️ Mode Infini':'';
+  document.getElementById('resSub').textContent=correctCount+'/'+total+' bonnes réponses · '+catLabel+(modeTxt?' · '+modeTxt:'');
   document.getElementById('resCorrect').textContent=correctCount;
-  document.getElementById('resTotal').textContent=Q_COUNT;
+  document.getElementById('resTotal').textContent=total;
   document.getElementById('resPts').textContent=score;
 
   if(currentUser){
@@ -1165,21 +1303,22 @@ function showResult(){
   showPage('resultPage');
 }
 
-// 🟢 Feat 8 : partage WhatsApp
 function shareWhatsapp(){
   const catLabel=CATS.find(c=>c.id===currentCat)?.label||currentCat;
   const pseudo=currentUser?currentUser.name:'Anonyme';
+  const total=currentQ;
+  const modeTxt=infiniteMode?` (Mode Infini ♾️ — ${total} questions !)`:` (${correctCount}/${total} bonnes réponses)`;
+  const refLink = currentUser ? SITE_URL+'?ref='+currentUser.refCode : SITE_URL;
   const msg=`🎯 Je viens de scorer ${score} pts sur QuizZone !\n`
-    +`📚 Catégorie : ${catLabel}\n`
-    +`✅ ${correctCount}/${Q_COUNT} bonnes réponses\n`
-    +`\n👊 Tu peux faire mieux ? Teste-toi ici :\n${SITE_URL}`;
+    +`📚 Catégorie : ${catLabel}${modeTxt}\n`
+    +`\n👊 Tu peux faire mieux ? Teste-toi ici :\n${refLink}`;
   window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
 }
 
 function retryQuiz(){ startQuiz(); }
 function goHome(){ if(currentUser){renderHome();showPage('homePage');}else showPage('landingPage'); }
 
-// ── NOTIFICATIONS ────────────────────────────────────────────────
+// ── NOTIFICATIONS ─────────────────────────────────────────────
 let notifications=[];
 function addNotif(text,icon='🔔'){
   const n={id:Date.now(),text,icon,time:new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),read:false};
@@ -1193,27 +1332,15 @@ function renderNotifs(){
   if(notifications.length===0){list.innerHTML='<div style="padding:24px;text-align:center;color:var(--muted);font-size:13px;">Aucune notification</div>';return;}
   list.innerHTML=notifications.map(n=>`<div class="notif-item ${n.read?'':'unread'}">${escHtml(n.icon)} ${escHtml(n.text)}<div class="notif-time">${n.time}</div></div>`).join('');
 }
-function toggleNotifs(){
-  const p=document.getElementById('notifPanel');
-  p.classList.toggle('open');
-}
-function markAllRead(){
-  notifications=notifications.map(n=>({...n,read:true}));
-  document.getElementById('notifDot').style.display='none';
-  renderNotifs();
-}
-function clearNotifs(){
-  notifications=[];
-  document.getElementById('notifDot').style.display='none';
-  renderNotifs();
-  document.getElementById('notifPanel').classList.remove('open');
-}
+function toggleNotifs(){ document.getElementById('notifPanel').classList.toggle('open'); }
+function markAllRead(){ notifications=notifications.map(n=>({...n,read:true})); document.getElementById('notifDot').style.display='none'; renderNotifs(); }
+function clearNotifs(){ notifications=[]; document.getElementById('notifDot').style.display='none'; renderNotifs(); document.getElementById('notifPanel').classList.remove('open'); }
 document.addEventListener('click',function(e){
   const panel=document.getElementById('notifPanel');
   if(panel.classList.contains('open')&&!panel.contains(e.target)&&!e.target.closest('.notif-bell')) panel.classList.remove('open');
 });
 
-// 🟢 Feat 10 : push notifications polling (annonces nouvelles toutes les 30s)
+// ── PUSH POLLING ──────────────────────────────────────────────
 let lastAnnounceCount=-1;
 let pushPollInterval=null;
 
@@ -1239,11 +1366,11 @@ function showPushBanner(msg){
 
 function startPushPolling(){
   if(pushPollInterval) return;
-  pollAnnouncements(); // init count sans notif
+  pollAnnouncements();
   pushPollInterval=setInterval(pollAnnouncements,30000);
 }
 
-// ── CHAT ────────────────────────────────────────────────────────
+// ── CHAT ──────────────────────────────────────────────────────
 let chatPollInterval=null;
 let lastMsgCount=0;
 const CHAT_REACTIONS=['👍','❤️','🔥'];
@@ -1261,16 +1388,11 @@ async function loadChat(){
   if(msgs.length!==lastMsgCount){
     if(msgs.length>lastMsgCount){
       const newOnes=msgs.slice(lastMsgCount);
-      newOnes.forEach(m=>{
-        if(currentUser&&m.author!==currentUser.name) addNotif(`${m.author}: ${m.text.slice(0,35)}...`,'💬');
-      });
+      newOnes.forEach(m=>{ if(currentUser&&m.author!==currentUser.name) addNotif(`${m.author}: ${m.text.slice(0,35)}...`,'💬'); });
     }
     lastMsgCount=msgs.length;
     renderChatMsgs(msgs);
-  } else if(msgs.length===0){
-    lastMsgCount=0;
-    renderChatMsgs([]);
-  }
+  } else if(msgs.length===0){ lastMsgCount=0; renderChatMsgs([]); }
 }
 
 function renderChatMsgs(msgs){
@@ -1292,7 +1414,6 @@ function renderChatMsgs(msgs){
   box.scrollTop=box.scrollHeight;
 }
 
-// 🟢 Feat 7 : réactions rapides dans le chat
 async function reactMsg(msgIdx, reaction){
   if(!currentUser){ toast('Connecte-toi pour réagir !'); return; }
   const data=await fetchBin();
@@ -1303,50 +1424,29 @@ async function reactMsg(msgIdx, reaction){
   if(!msg.myReactions) msg.myReactions=[];
   const key=currentUser.name+'::'+reaction;
   const already=msg.myReactions.includes(key);
-  if(already){
-    msg.myReactions=msg.myReactions.filter(k=>k!==key);
-    msg.reactions[reaction]=Math.max(0,(msg.reactions[reaction]||1)-1);
-  } else {
-    msg.myReactions.push(key);
-    msg.reactions[reaction]=(msg.reactions[reaction]||0)+1;
-  }
+  if(already){ msg.myReactions=msg.myReactions.filter(k=>k!==key); msg.reactions[reaction]=Math.max(0,(msg.reactions[reaction]||1)-1); }
+  else { msg.myReactions.push(key); msg.reactions[reaction]=(msg.reactions[reaction]||0)+1; }
   msgs[msgIdx]=msg;
   await updateBin({...data,chat:msgs});
-  lastMsgCount=0; // force re-render
+  lastMsgCount=0;
   renderChatMsgs(msgs);
 }
 
-// 🟡 Fix 4 : validation pseudo dans le chat (pseudo déjà pris par un autre)
 async function sendMsg(){
   if(!currentUser){ toast('Connecte-toi pour chatter !'); return; }
   const input=document.getElementById('chatInput');
   const text=input.value.trim();
   if(!text) return;
-
-  // Vérifier que le pseudo dans le chat correspond bien à l'utilisateur connecté
   const data=await fetchBin();
-  const recentMsgs=data.chat||[];
-  const lastHour=Date.now()-3600000;
-  const impostor=recentMsgs.find(m=>m.author.toLowerCase()===currentUser.name.toLowerCase()&&m.authorId&&m.authorId!==currentUser.createdAt);
-  if(impostor){ toast('⚠️ Conflit de pseudo détecté.'); return; }
-
   input.value='';
-  const msg={
-    id:Date.now(),
-    author:currentUser.name,
-    authorId:currentUser.createdAt, // identifiant unique lié à la création du compte
-    text,
-    time:new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
-    reactions:{},
-    myReactions:[]
-  };
-  const chat=[...recentMsgs,msg].slice(-100);
+  const msg={ id:Date.now(), author:currentUser.name, authorId:currentUser.createdAt, text, time:new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}), reactions:{}, myReactions:[] };
+  const chat=[...(data.chat||[]),msg].slice(-100);
   await updateBin({...data,chat});
   lastMsgCount=chat.length;
   renderChatMsgs(chat);
 }
 
-// ── ANNOUNCEMENTS ────────────────────────────────────────────────
+// ── ANNOUNCEMENTS ─────────────────────────────────────────────
 async function openAnnouncements(){
   showPage('announcePage');
   const data=await fetchBin();
@@ -1354,10 +1454,7 @@ async function openAnnouncements(){
   const typeColors={info:'var(--neon)',hot:'var(--pink)',event:'var(--gold)',update:'var(--purple)'};
   const typeLabels={info:'📌 Info',hot:'🔥 Hot',event:'🎉 Événement',update:'✨ Mise à jour'};
   const list=document.getElementById('announceList');
-  if(announces.length===0){
-    list.innerHTML='<div style="text-align:center;color:var(--muted);padding:40px;font-size:14px;">Aucune annonce pour l\'instant 👀<br>Revenez bientôt !</div>';
-    return;
-  }
+  if(announces.length===0){ list.innerHTML='<div style="text-align:center;color:var(--muted);padding:40px;font-size:14px;">Aucune annonce pour l\'instant 👀<br>Revenez bientôt !</div>'; return; }
   list.innerHTML=announces.map(a=>`
     <div class="announce-item" style="border-left-color:${typeColors[a.type]||'var(--neon)'}">
       <div class="announce-type" style="color:${typeColors[a.type]||'var(--neon)'}">${typeLabels[a.type]||'Info'} · ${escHtml(a.emoji||'📣')}</div>
@@ -1367,11 +1464,12 @@ async function openAnnouncements(){
     </div>`).join('');
 }
 
-// ── ADMIN ────────────────────────────────────────────────────────
+// ── ADMIN ─────────────────────────────────────────────────────
 let adminAuthed=false;
+function _checkAdminPass(input){ return btoa(input)===btoa('admin2024'); }
+
 function loginAdmin(){
   const pass=document.getElementById('adminPassInput').value;
-  // 🔴 Fix 2 : comparaison sécurisée sans mot de passe en clair
   if(_checkAdminPass(pass)){
     adminAuthed=true;
     document.getElementById('adminGate').style.display='none';
@@ -1433,34 +1531,26 @@ async function clearChat(){
   toast('🗑️ Chat vidé !');
 }
 
-// 🟢 Feat 9 : Page profil publique
-function openMyProfile(){
-  if(!currentUser) return;
-  openPublicProfile(currentUser.name);
-}
+// ── PROFIL ────────────────────────────────────────────────────
+function openMyProfile(){ if(!currentUser) return; openPublicProfile(currentUser.name); }
 
 async function openPublicProfile(name){
-  // D'abord chercher dans le classement JSONbin pour avoir les données à jour
   const data=await fetchBin();
   const lbEntry=data.leaderboard.find(e=>e.name.toLowerCase()===name.toLowerCase());
-  // Puis dans le localStorage
   const localUser=getUser(name);
   const userData=lbEntry||localUser||null;
-
   if(!userData){ toast('Joueur introuvable'); return; }
 
   document.getElementById('profileAvatar').textContent=userData.name[0].toUpperCase();
   document.getElementById('profileUsername').textContent=userData.name;
   document.getElementById('profileTotalPts').textContent=userData.score||userData.totalPts||0;
   document.getElementById('profileStreak').textContent=userData.streak||0;
-  document.getElementById('profileQuizCount').textContent=
-    userData.quizCount||Object.keys(userData.bestScores||{}).length||0;
+  document.getElementById('profileQuizCount').textContent=userData.quizCount||Object.keys(userData.bestScores||{}).length||0;
 
   const streak=userData.streak||0;
   document.getElementById('profileStreakBadge').innerHTML=streak>0
     ?`<div class="streak-badge">🔥 ${streak} jour${streak>1?'s':''} de streak</div>`:'';
 
-  // Meilleurs scores par catégorie
   const bs=userData.bestScores||{};
   const grid=document.getElementById('profileBestScores');
   const catEntries=CATS.filter(c=>bs[c.id]>0);
@@ -1476,19 +1566,20 @@ async function openPublicProfile(name){
   showPage('profilePage');
 }
 
-// ── INIT ────────────────────────────────────────────────────────
+// ── INIT ──────────────────────────────────────────────────────
 function init(){
   pickChallenge();
   renderSetupCats();
+  // Lire le paramètre ref dans l'URL (parrainage)
+  const params=new URLSearchParams(window.location.search);
+  const refParam=params.get('ref');
+  if(refParam) localStorage.setItem('qz_pending_ref',refParam);
+
   const sess=localStorage.getItem('qz_sess');
-  if(sess){ const u=getUser(sess); if(u){ currentUser=u; updateStreak(); enterHome(); startPushPolling(); return; } }
+  if(sess){ const u=getUser(sess); if(u){ currentUser=u; updateStreak(); enterHome(); return; } }
   showPage('landingPage');
-  // Polling anonyme aussi (pour voir les annonces)
   setTimeout(()=>{ lastAnnounceCount=-1; startPushPolling(); },2000);
 }
-
-// Démarrer le polling push après connexion
-const _origHandleAuth=handleAuth;
 
 init();
 </script>
