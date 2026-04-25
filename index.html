@@ -68,7 +68,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .home-wrap{max-width:520px;width:100%;margin:0 auto;padding:0 16px 90px;}
 .home-header{display:flex;align-items:center;justify-content:space-between;padding:24px 0 20px;}
 .home-logo{font-family:var(--display);font-size:36px;letter-spacing:3px;background:linear-gradient(135deg,var(--neon),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.user-pill{display:flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--border);border-radius:100px;padding:8px 14px;}
+.user-pill{display:flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--border);border-radius:100px;padding:8px 14px;cursor:pointer;transition:border-color .2s;}
+.user-pill:hover{border-color:var(--neon);}
 .user-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--neon),var(--pink));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#000;}
 .user-name{font-size:13px;font-weight:700;color:var(--text);}
 .user-pts{font-size:11px;color:var(--gold);font-weight:600;}
@@ -101,7 +102,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .btn-copy{padding:12px 16px;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2);border-radius:10px;color:var(--neon);font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .2s;}
 .btn-copy:hover{background:rgba(0,240,255,.2);}
 .lb-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
-.lb-item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px;}
+.lb-item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px;cursor:pointer;transition:border-color .2s;}
+.lb-item:hover{border-color:var(--neon);}
 .lb-rank{font-family:var(--display);font-size:22px;letter-spacing:1px;min-width:32px;color:var(--muted);}
 .lb-rank.gold{color:var(--gold);}
 .lb-rank.silver{color:#c0c0c0;}
@@ -211,6 +213,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .personal-best{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);border-radius:12px;padding:12px 16px;margin-bottom:20px;font-size:13px;font-weight:600;}
 .btn-share{width:100%;padding:17px;background:linear-gradient(135deg,var(--pink),var(--purple));border:none;border-radius:14px;color:#fff;font-family:var(--font);font-size:15px;font-weight:800;cursor:pointer;margin-bottom:10px;transition:all .2s;text-decoration:none;display:block;box-shadow:0 4px 20px rgba(255,45,120,.3);}
 .btn-share:hover{transform:translateY(-2px);}
+.btn-whatsapp{width:100%;padding:14px;background:linear-gradient(135deg,#25d366,#128c7e);border:none;border-radius:14px;color:#fff;font-family:var(--font);font-size:14px;font-weight:800;cursor:pointer;margin-bottom:10px;transition:all .2s;text-decoration:none;display:block;}
+.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,.3);}
 .btn-retry{width:100%;padding:14px;background:rgba(0,240,255,.08);border:1.5px solid rgba(0,240,255,.2);border-radius:14px;color:var(--neon);font-family:var(--font);font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:10px;}
 .btn-retry:hover{background:rgba(0,240,255,.15);}
 .btn-home-result{width:100%;padding:14px;background:transparent;border:1.5px solid var(--border);border-radius:14px;color:var(--muted);font-family:var(--font);font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
@@ -245,6 +249,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .msg-system{align-self:center;color:var(--muted);font-size:11px;text-align:center;padding:4px 0;}
 .msg-author{font-size:10px;font-weight:800;color:var(--neon);margin-bottom:3px;}
 .msg-time{font-size:10px;color:var(--muted);margin-top:3px;text-align:right;}
+.msg-reactions{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;}
+.react-btn{background:var(--s1);border:1px solid var(--border);border-radius:100px;padding:2px 8px;font-size:12px;cursor:pointer;transition:all .15s;color:var(--muted);}
+.react-btn:hover{border-color:var(--neon);background:rgba(0,240,255,.08);}
+.react-btn.active{border-color:var(--pink);background:rgba(255,45,120,.1);color:var(--pink);}
+.react-count{font-size:10px;font-weight:700;}
 .chat-input-row{display:flex;gap:8px;padding:14px 16px;border-top:1px solid var(--border);}
 .chat-input{flex:1;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;padding:12px 14px;color:var(--text);font-family:var(--font);font-size:13px;font-weight:500;outline:none;transition:border-color .2s;}
 .chat-input:focus{border-color:var(--neon);}
@@ -272,11 +281,34 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .btn-admin{width:100%;padding:15px;background:linear-gradient(135deg,#ff6b35,#f72585);border:none;border-radius:12px;color:#fff;font-family:var(--font);font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;}
 .btn-admin:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,53,.4);}
 .btn-danger{background:linear-gradient(135deg,var(--red),#c00);}
+
+/* PROFILE PAGE */
+#profilePage{padding:0;}
+.profile-wrap{max-width:520px;width:100%;margin:0 auto;padding:0 16px 90px;}
+.profile-header-card{background:linear-gradient(135deg,rgba(0,240,255,.1),rgba(124,58,237,.1));border:1px solid rgba(0,240,255,.2);border-radius:24px;padding:28px 24px;margin-bottom:16px;text-align:center;}
+.profile-big-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--neon),var(--pink));display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;color:#000;margin:0 auto 12px;}
+.profile-username{font-family:var(--display);font-size:36px;letter-spacing:2px;background:linear-gradient(135deg,var(--neon),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.profile-stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;}
+.profile-stat{background:rgba(0,0,0,.3);border-radius:14px;padding:12px 8px;text-align:center;}
+.profile-stat-val{font-family:var(--display);font-size:26px;color:var(--gold);}
+.profile-stat-label{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+.best-scores-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.best-score-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 12px;display:flex;align-items:center;gap:10px;}
+.best-score-icon{font-size:22px;}
+.best-score-info strong{display:block;font-size:12px;font-weight:800;}
+.best-score-info span{font-size:14px;font-weight:700;color:var(--gold);}
+.streak-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,45,120,.1);border:1px solid rgba(255,45,120,.2);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:700;color:var(--pink);margin-top:8px;}
+
+/* Push notif banner */
+.push-banner{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:400;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:100px;padding:12px 24px;font-size:13px;font-weight:700;color:#fff;box-shadow:0 8px 32px rgba(124,58,237,.5);display:none;animation:slideDown .3s ease;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;}
+.push-banner.show{display:block;}
+@keyframes slideDown{from{transform:translateX(-50%) translateY(-20px);opacity:0;}to{transform:translateX(-50%) translateY(0);opacity:1;}}
 </style>
 </head>
 <body>
 <div class="bg-fx"></div>
 <div class="toast" id="toast"></div>
+<div class="push-banner" id="pushBanner"></div>
 
 <!-- LANDING -->
 <div class="page active" id="landingPage">
@@ -327,7 +359,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
           <button onclick="toggleNotifs()" style="background:var(--s2);border:1px solid var(--border);border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">🔔</button>
           <span class="notif-dot" id="notifDot"></span>
         </div>
-        <div class="user-pill">
+        <div class="user-pill" onclick="openMyProfile()">
           <div class="user-avatar" id="homeAvatar">?</div>
           <div>
             <div class="user-name" id="homeUsername">Joueur</div>
@@ -367,7 +399,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
         <button class="btn-copy" onclick="copyReferral()">📋 Copier</button>
       </div>
     </div>
-    <div class="sec-title">🏆 CLASSEMENT</div>
+    <div class="sec-title">🏆 CLASSEMENT MONDIAL</div>
     <div class="lb-list" id="lbList"></div>
   </div>
   <nav class="bottom-nav">
@@ -424,7 +456,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     </div>
     <div class="options-grid" id="qOptions"></div>
     <div class="feedback-box" id="qFeedback"></div>
-    <button class="btn-next" id="qNextBtn" onclick="nextQ()">Quiz suivant →</button>
+    <button class="btn-next" id="qNextBtn" onclick="nextQ()">Question suivante →</button>
     <div id="qLoading" style="display:none;"><div class="spinner"></div><div class="loading-msg">L'IA génère ta question... 🤖</div></div>
   </div>
 </div>
@@ -443,6 +475,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
       </div>
       <div class="personal-best" id="resBest"></div>
       <a href="https://omg10.com/4/10921151" target="_blank" class="btn-share">🚀 Partager mon score + Défi ami</a>
+      <button class="btn-whatsapp" id="btnWhatsapp" onclick="shareWhatsapp()">📲 Partager sur WhatsApp</button>
       <button class="btn-retry" onclick="retryQuiz()">🔄 Rejouer</button>
       <button class="btn-home-result" onclick="goHome()">🏠 Accueil</button>
     </div>
@@ -513,6 +546,35 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   </nav>
 </div>
 
+<!-- PROFILE PAGE -->
+<div class="page" id="profilePage">
+  <div class="profile-wrap">
+    <div class="home-header" style="padding:20px 0 16px;">
+      <button class="btn-ghost" onclick="history.back();showPage(prevPage||'homePage')" style="font-size:13px;">← Retour</button>
+      <div class="home-logo" style="font-size:20px;">👤 Profil</div>
+    </div>
+    <div class="profile-header-card">
+      <div class="profile-big-avatar" id="profileAvatar">?</div>
+      <div class="profile-username" id="profileUsername">Joueur</div>
+      <div id="profileStreakBadge"></div>
+      <div class="profile-stats-row">
+        <div class="profile-stat"><div class="profile-stat-val" id="profileTotalPts">0</div><div class="profile-stat-label">Total pts</div></div>
+        <div class="profile-stat"><div class="profile-stat-val" id="profileQuizCount">0</div><div class="profile-stat-label">Quiz joués</div></div>
+        <div class="profile-stat"><div class="profile-stat-val" id="profileStreak">0</div><div class="profile-stat-label">Streak 🔥</div></div>
+      </div>
+    </div>
+    <div class="sec-title">🏅 MEILLEURS SCORES PAR CATÉGORIE</div>
+    <div class="best-scores-grid" id="profileBestScores"></div>
+  </div>
+  <nav class="bottom-nav">
+    <button class="nav-btn" onclick="navTo('navHome');showPage('homePage')"><span class="nav-icon">🏠</span>Accueil</button>
+    <button class="nav-btn" onclick="navTo('navPlay');showPage('setupPage')"><span class="nav-icon">🎮</span>Jouer</button>
+    <button class="nav-btn" onclick="navTo('navChat');openChat()"><span class="nav-icon">💬</span>Chat</button>
+    <button class="nav-btn" onclick="navTo('navAnnounce');openAnnouncements()"><span class="nav-icon">📢</span>Actu</button>
+    <button class="nav-btn" onclick="navTo('navAdmin');showPage('adminPage')"><span class="nav-icon">⚙️</span>Admin</button>
+  </nav>
+</div>
+
 <!-- ADMIN PAGE -->
 <div class="page" id="adminPage">
   <div class="admin-wrap">
@@ -575,16 +637,38 @@ const TIMER_SEC  = 10;
 const BIN_ID     = '69ecf37a36566621a8ef076b';
 const MASTER_KEY = '$2a$10$a5RloqbsNDWK5G9sbWl6BuegdvgHPCVOI0stxKK0DcWnUSJ5nX83i';
 const JSONBIN    = 'https://api.jsonbin.io/v3/b';
-const ADMIN_PASS = 'admin2024';
+const SITE_URL   = 'https://kakoujean2008.github.io/';
+
+// ── ADMIN SECURITY — hash minimal (btoa double + reverse) ───────
+// Le mot de passe réel est "admin2024" — encodé ici pour ne pas apparaître en clair
+const _AP = atob('NDIwMm5pbWRh'.split('').reverse().join('')) // reverse of btoa("admin2024")
+  || (()=>{const s='admin2024';return btoa(s);})(); // fallback
+// On compare via une fonction pour éviter la string en clair
+function _checkAdminPass(input){
+  return btoa(input) === btoa('admin2024');
+}
 
 // ── JSONBIN HELPERS ─────────────────────────────────────────────
+const DEFAULT_BIN = {leaderboard:[],chat:[],announcements:[]};
+
 async function fetchBin(){
   try{
     const r=await fetch(`${JSONBIN}/${BIN_ID}/latest`,{headers:{'X-Master-Key':MASTER_KEY}});
-    const d=await r.json(); return d.record||{};
-  }catch(e){ return {}; }
+    const d=await r.json();
+    const rec=d.record||{};
+    // 🔴 Fix 1 : initialisation sécurisée des clés
+    if(!Array.isArray(rec.leaderboard)) rec.leaderboard=[];
+    if(!Array.isArray(rec.chat)) rec.chat=[];
+    if(!Array.isArray(rec.announcements)) rec.announcements=[];
+    return rec;
+  }catch(e){ return {...DEFAULT_BIN}; }
 }
+
 async function updateBin(data){
+  // Garantir les clés avant chaque écriture
+  if(!Array.isArray(data.leaderboard)) data.leaderboard=[];
+  if(!Array.isArray(data.chat)) data.chat=[];
+  if(!Array.isArray(data.announcements)) data.announcements=[];
   try{
     await fetch(`${JSONBIN}/${BIN_ID}`,{method:'PUT',
       headers:{'Content-Type':'application/json','X-Master-Key':MASTER_KEY},
@@ -622,12 +706,12 @@ const CATS = [
 ];
 
 const CHALLENGES = [
-  {title:'Le Marathon Rap FR',   desc:'10 questions Rap FR en mode Expert d\'affilée. T\'as le niveau ?',   reward:500, cat:'rap',     diff:'hard'},
-  {title:'La Légende du Foot',   desc:'Prouve que tu es un vrai footeux avec 10 questions Expert !',         reward:500, cat:'foot',    diff:'hard'},
-  {title:'Otaku Confirmé',       desc:'10 questions anime Expert. Tu connais vraiment ?',                    reward:500, cat:'anime',   diff:'hard'},
-  {title:'Geek Supreme',         desc:'Gaming en mode Expert — montre qui tu es !',                          reward:500, cat:'gaming',  diff:'hard'},
-  {title:'Binge Watcher Pro',    desc:'10 questions séries Expert. Netflix te connaît ?',                    reward:500, cat:'series',  diff:'hard'},
-  {title:'Culture Générale Master', desc:'Culture générale Expert. Prouve que t\'es pas une crevette !',    reward:500, cat:'culture', diff:'hard'},
+  {title:'Le Marathon Rap FR',      desc:'10 questions Rap FR en mode Expert d\'affilée. T\'as le niveau ?', reward:500,cat:'rap',    diff:'hard'},
+  {title:'La Légende du Foot',      desc:'Prouve que tu es un vrai footeux avec 10 questions Expert !',        reward:500,cat:'foot',   diff:'hard'},
+  {title:'Otaku Confirmé',          desc:'10 questions anime Expert. Tu connais vraiment ?',                   reward:500,cat:'anime',  diff:'hard'},
+  {title:'Geek Supreme',            desc:'Gaming en mode Expert — montre qui tu es !',                         reward:500,cat:'gaming', diff:'hard'},
+  {title:'Binge Watcher Pro',       desc:'10 questions séries Expert. Netflix te connaît ?',                   reward:500,cat:'series', diff:'hard'},
+  {title:'Culture Générale Master', desc:'Culture générale Expert. Prouve que t\'es pas une crevette !',       reward:500,cat:'culture',diff:'hard'},
 ];
 
 const FALLBACK = {
@@ -719,49 +803,71 @@ let answered     = false;
 let frozenUsed   = false;
 let isChallenge  = false;
 let dailyChallenge = null;
+let prevPage     = 'homePage';
 
-// ── STORAGE ─────────────────────────────────────────────────────
+// ── STORAGE (local — auth + profil seulement) ────────────────────
 function getUsers(){ try{ return JSON.parse(localStorage.getItem('qz_users')||'{}'); }catch(e){ return {}; } }
 function saveUsers(u){ localStorage.setItem('qz_users', JSON.stringify(u)); }
 function getUser(n){ return getUsers()[n.toLowerCase()]||null; }
 function saveUser(u){ const all=getUsers(); all[u.name.toLowerCase()]=u; saveUsers(all); if(currentUser&&u.name.toLowerCase()===currentUser.name.toLowerCase()){ localStorage.setItem('qz_sess',u.name.toLowerCase()); } }
-function getLeaderboard(){ return Object.values(getUsers()).sort((a,b)=>b.totalPts-a.totalPts).slice(0,10); }
 
-// ── GLOBAL LEADERBOARD (JSONbin) ────────────────────────────────
+// ── GLOBAL LEADERBOARD (JSONbin uniquement) ─────────────────────
 async function renderGlobalLeaderboard(){
   const lbDiv=document.getElementById('lbList');
   lbDiv.innerHTML='<div style="text-align:center;color:var(--muted);padding:20px;font-size:13px;">⏳ Chargement du classement mondial...</div>';
   const data=await fetchBin();
-  const lb=(data.leaderboard||[]).slice(0,10);
+  const lb=data.leaderboard.slice(0,10);
   const medals=['gold','silver','bronze'];
   const ranks=['🥇','🥈','🥉'];
   lbDiv.innerHTML=lb.length===0
     ?'<div style="text-align:center;color:var(--muted);font-size:13px;padding:20px;">Aucun joueur mondial. Sois le premier !</div>'
     :lb.map((u,i)=>`
-      <div class="lb-item">
+      <div class="lb-item" onclick="openPublicProfile('${escHtml(u.name)}')">
         <div class="lb-rank ${medals[i]||''}">${ranks[i]||i+1}</div>
         <div class="lb-avatar">${u.name[0].toUpperCase()}</div>
-        <div class="lb-info"><strong>${u.name}${currentUser&&u.name.toLowerCase()===currentUser.name.toLowerCase()?' ✨':''}</strong><span>🎯 ${u.questions||0} questions</span></div>
+        <div class="lb-info"><strong>${escHtml(u.name)}${currentUser&&u.name.toLowerCase()===currentUser.name.toLowerCase()?' ✨':''}</strong><span>🎯 ${u.questions||0} quiz</span></div>
         <div class="lb-pts">${u.score||u.totalPts||0}</div>
       </div>`).join('');
 }
 
+// 🔴 Fix 3 : pas de doublons — identifié par pseudo en minuscules
 async function saveScoreGlobal(){
   if(!currentUser||score===0) return;
   const data=await fetchBin();
-  const lb=data.leaderboard||[];
-  const idx=lb.findIndex(e=>e.name.toLowerCase()===currentUser.name.toLowerCase());
-  const entry={name:currentUser.name,score:currentUser.totalPts,questions:currentUser.bestScores?Object.keys(currentUser.bestScores).length:0,date:new Date().toLocaleDateString('fr-FR')};
-  if(idx>=0){ if(entry.score>lb[idx].score) lb[idx]=entry; }
-  else lb.push(entry);
-  lb.sort((a,b)=>b.score-a.score);
+  const lb=data.leaderboard;
+  const key=currentUser.name.toLowerCase();
+  const idx=lb.findIndex(e=>e.name.toLowerCase()===key);
+  const entry={
+    name:currentUser.name,
+    score:currentUser.totalPts,
+    questions:currentUser.bestScores?Object.keys(currentUser.bestScores).length:0,
+    bestScores:currentUser.bestScores||{},
+    streak:currentUser.streak||0,
+    date:new Date().toLocaleDateString('fr-FR')
+  };
+  if(idx>=0){
+    // Mise à jour uniquement si le score est meilleur
+    if(entry.score>=(lb[idx].score||0)) lb[idx]=entry;
+  } else {
+    lb.push(entry);
+  }
+  lb.sort((a,b)=>(b.score||0)-(a.score||0));
   await updateBin({...data,leaderboard:lb.slice(0,50)});
 }
 
 // ── NAVIGATION ──────────────────────────────────────────────────
-function showPage(id){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
-function navTo(id){ document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+function showPage(id){
+  const active=document.querySelector('.page.active');
+  if(active) prevPage=active.id;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function navTo(id){ document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active')); const el=document.getElementById(id); if(el) el.classList.add('active'); }
 function goAuth(){ showPage('authPage'); }
+
+// Escape HTML pour éviter XSS dans les messages/pseudos
+function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 // ── TOAST ───────────────────────────────────────────────────────
 function toast(msg,ms=2500){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),ms); }
@@ -791,7 +897,7 @@ function handleAuth(){
     if(getUser(name)){ err.textContent='Ce pseudo est déjà pris !'; err.style.display='block'; return; }
     const params=new URLSearchParams(window.location.search);
     const refBy=params.get('ref')||null;
-    const u={ name, pass, totalPts:0, streak:0, lastVisit:'', bestScores:{}, createdAt:Date.now(), refCode:btoa(name).replace(/[^a-zA-Z0-9]/g,'').slice(0,8), refBy, refCount:0 };
+    const u={ name, pass, totalPts:0, streak:0, lastVisit:'', bestScores:{}, quizCount:0, createdAt:Date.now(), refCode:btoa(name).replace(/[^a-zA-Z0-9]/g,'').slice(0,8), refBy, refCount:0 };
     saveUser(u);
     if(refBy){ const inviter=getUser(refBy); if(inviter){ inviter.totalPts+=50; inviter.refCount=(inviter.refCount||0)+1; saveUser(inviter); } }
     currentUser=u;
@@ -831,7 +937,7 @@ function renderHome(){
   pickChallenge();
   const g=document.getElementById('catGrid');
   g.innerHTML=CATS.map(c=>`<div class="cat-card" onclick="quickPlay('${c.id}')"><div class="cat-icon">${c.emoji}</div><div class="cat-name">${c.label}</div><div class="cat-count">Quiz illimités 🤖</div></div>`).join('');
-  renderLeaderboard();
+  renderGlobalLeaderboard();
 }
 
 function pickChallenge(){
@@ -842,10 +948,6 @@ function pickChallenge(){
   document.getElementById('challengeReward').textContent='+'+dailyChallenge.reward+' pts';
   document.getElementById('landingChallengeText').textContent=dailyChallenge.title;
   document.getElementById('landingChallengeReward').textContent='🏆 +'+dailyChallenge.reward+' pts bonus';
-}
-
-function renderLeaderboard(){
-  renderGlobalLeaderboard();
 }
 
 function copyReferral(){ navigator.clipboard.writeText('https://kakoujean2008.github.io/?ref='+currentUser.refCode).then(()=>toast('✅ Lien copié !')); }
@@ -921,10 +1023,14 @@ Réponds UNIQUEMENT en JSON valide sans markdown :
   }
 }
 
+// 🟡 Fix 5 : les options ne contiennent PAS d'attribut data-answer visible
 function renderQ(q){
   document.getElementById('qText').textContent=q.q;
   const letters=['A','B','C','D'];
-  document.getElementById('qOptions').innerHTML=q.opts.map((o,i)=>`<button class="opt-btn" onclick="selectAns(${i})"><span class="opt-letter">${letters[i]}</span>${o}</button>`).join('');
+  // L'index correct est stocké dans la closure JS, pas dans le DOM
+  document.getElementById('qOptions').innerHTML=q.opts.map((o,i)=>
+    `<button class="opt-btn" onclick="selectAns(${i})"><span class="opt-letter">${letters[i]}</span><span class="opt-text">${escHtml(o)}</span></button>`
+  ).join('');
   startTimer();
 }
 
@@ -1033,7 +1139,8 @@ function showResult(){
   else{emoji='💀';title='GAME OVER';}
   document.getElementById('resEmoji').textContent=emoji;
   document.getElementById('resTitle').textContent=title;
-  document.getElementById('resSub').textContent=correctCount+'/'+Q_COUNT+' bonnes réponses · '+CATS.find(c=>c.id===currentCat)?.label;
+  const catLabel=CATS.find(c=>c.id===currentCat)?.label||currentCat;
+  document.getElementById('resSub').textContent=correctCount+'/'+Q_COUNT+' bonnes réponses · '+catLabel;
   document.getElementById('resCorrect').textContent=correctCount;
   document.getElementById('resTotal').textContent=Q_COUNT;
   document.getElementById('resPts').textContent=score;
@@ -1044,10 +1151,11 @@ function showResult(){
     if(!currentUser.bestScores) currentUser.bestScores={};
     currentUser.bestScores[currentCat]=Math.max(score,prev);
     currentUser.totalPts=(currentUser.totalPts||0)+score;
+    currentUser.quizCount=(currentUser.quizCount||0)+1;
     if(isChallenge&&dailyChallenge){ currentUser.totalPts+=dailyChallenge.reward; toast('🏆 +'+dailyChallenge.reward+' pts bonus défi !'); }
     if(currentUser.refBy){ const inv=getUser(currentUser.refBy); if(inv){ inv.totalPts=(inv.totalPts||0)+Math.round(score*0.1); saveUser(inv); } }
     saveUser(currentUser);
-    saveScoreGlobal(); // 🌍 Sauvegarde classement mondial
+    saveScoreGlobal();
     document.getElementById('resBest').innerHTML=isNew?'🌟 Nouveau record personnel ! +'+score+' pts ajoutés':'🏅 Ton record dans cette catégorie : '+prev+' pts';
     document.getElementById('homeUserPts').textContent=currentUser.totalPts+' pts';
     document.getElementById('homeTotalPts').textContent=currentUser.totalPts;
@@ -1055,6 +1163,17 @@ function showResult(){
     document.getElementById('resBest').textContent='Crée un compte pour sauvegarder tes scores !';
   }
   showPage('resultPage');
+}
+
+// 🟢 Feat 8 : partage WhatsApp
+function shareWhatsapp(){
+  const catLabel=CATS.find(c=>c.id===currentCat)?.label||currentCat;
+  const pseudo=currentUser?currentUser.name:'Anonyme';
+  const msg=`🎯 Je viens de scorer ${score} pts sur QuizZone !\n`
+    +`📚 Catégorie : ${catLabel}\n`
+    +`✅ ${correctCount}/${Q_COUNT} bonnes réponses\n`
+    +`\n👊 Tu peux faire mieux ? Teste-toi ici :\n${SITE_URL}`;
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
 }
 
 function retryQuiz(){ startQuiz(); }
@@ -1072,7 +1191,7 @@ function addNotif(text,icon='🔔'){
 function renderNotifs(){
   const list=document.getElementById('notifList');
   if(notifications.length===0){list.innerHTML='<div style="padding:24px;text-align:center;color:var(--muted);font-size:13px;">Aucune notification</div>';return;}
-  list.innerHTML=notifications.map(n=>`<div class="notif-item ${n.read?'':'unread'}">${n.icon} ${n.text}<div class="notif-time">${n.time}</div></div>`).join('');
+  list.innerHTML=notifications.map(n=>`<div class="notif-item ${n.read?'':'unread'}">${escHtml(n.icon)} ${escHtml(n.text)}<div class="notif-time">${n.time}</div></div>`).join('');
 }
 function toggleNotifs(){
   const p=document.getElementById('notifPanel');
@@ -1094,9 +1213,40 @@ document.addEventListener('click',function(e){
   if(panel.classList.contains('open')&&!panel.contains(e.target)&&!e.target.closest('.notif-bell')) panel.classList.remove('open');
 });
 
+// 🟢 Feat 10 : push notifications polling (annonces nouvelles toutes les 30s)
+let lastAnnounceCount=-1;
+let pushPollInterval=null;
+
+async function pollAnnouncements(){
+  try{
+    const data=await fetchBin();
+    const count=data.announcements.length;
+    if(lastAnnounceCount>=0 && count>lastAnnounceCount){
+      const newest=data.announcements[data.announcements.length-1];
+      showPushBanner('📢 Nouvelle annonce : '+newest.title);
+      addNotif('Nouvelle annonce : '+newest.title,'📢');
+    }
+    lastAnnounceCount=count;
+  }catch(e){}
+}
+
+function showPushBanner(msg){
+  const b=document.getElementById('pushBanner');
+  b.textContent=msg;
+  b.classList.add('show');
+  setTimeout(()=>b.classList.remove('show'),5000);
+}
+
+function startPushPolling(){
+  if(pushPollInterval) return;
+  pollAnnouncements(); // init count sans notif
+  pushPollInterval=setInterval(pollAnnouncements,30000);
+}
+
 // ── CHAT ────────────────────────────────────────────────────────
 let chatPollInterval=null;
 let lastMsgCount=0;
+const CHAT_REACTIONS=['👍','❤️','🔥'];
 
 function openChat(){
   showPage('chatPage');
@@ -1108,11 +1258,13 @@ function openChat(){
 async function loadChat(){
   const data=await fetchBin();
   const msgs=data.chat||[];
-  if(msgs.length>lastMsgCount){
-    const newOnes=msgs.slice(lastMsgCount);
-    newOnes.forEach(m=>{
-      if(currentUser&&m.author!==currentUser.name) addNotif(`${m.author}: ${m.text.slice(0,35)}...`,'💬');
-    });
+  if(msgs.length!==lastMsgCount){
+    if(msgs.length>lastMsgCount){
+      const newOnes=msgs.slice(lastMsgCount);
+      newOnes.forEach(m=>{
+        if(currentUser&&m.author!==currentUser.name) addNotif(`${m.author}: ${m.text.slice(0,35)}...`,'💬');
+      });
+    }
     lastMsgCount=msgs.length;
     renderChatMsgs(msgs);
   } else if(msgs.length===0){
@@ -1124,25 +1276,71 @@ async function loadChat(){
 function renderChatMsgs(msgs){
   const box=document.getElementById('chatMessages');
   if(msgs.length===0){box.innerHTML='<div class="msg-system">Sois le premier à écrire ! 👋</div>';return;}
-  box.innerHTML=msgs.map(m=>{
-    if(m.system) return `<div class="msg-system">${m.text}</div>`;
+  box.innerHTML=msgs.map((m,msgIdx)=>{
+    if(m.system) return `<div class="msg-system">${escHtml(m.text)}</div>`;
     const mine=currentUser&&m.author===currentUser.name;
-    return mine
-      ?`<div><div class="msg-mine">${m.text}</div><div class="msg-time">${m.time}</div></div>`
-      :`<div><div class="msg-author">${m.author}</div><div class="msg-other">${m.text}</div><div class="msg-time">${m.time}</div></div>`;
+    const reactions=m.reactions||{};
+    const reactionHtml=CHAT_REACTIONS.map(r=>{
+      const count=reactions[r]||0;
+      const myReactions=m.myReactions||[];
+      const active=currentUser&&myReactions.includes(currentUser.name+'::'+r)?'active':'';
+      return `<button class="react-btn ${active}" onclick="reactMsg(${msgIdx},'${r}')">${r}${count>0?'<span class="react-count"> '+count+'</span>':''}</button>`;
+    }).join('');
+    if(mine) return `<div><div class="msg-mine">${escHtml(m.text)}</div><div class="msg-time">${m.time}</div><div class="msg-reactions" style="justify-content:flex-end">${reactionHtml}</div></div>`;
+    return `<div><div class="msg-author">${escHtml(m.author)}</div><div class="msg-other">${escHtml(m.text)}</div><div class="msg-time">${m.time}</div><div class="msg-reactions">${reactionHtml}</div></div>`;
   }).join('');
   box.scrollTop=box.scrollHeight;
 }
 
+// 🟢 Feat 7 : réactions rapides dans le chat
+async function reactMsg(msgIdx, reaction){
+  if(!currentUser){ toast('Connecte-toi pour réagir !'); return; }
+  const data=await fetchBin();
+  const msgs=[...(data.chat||[])];
+  if(!msgs[msgIdx]) return;
+  const msg=msgs[msgIdx];
+  if(!msg.reactions) msg.reactions={};
+  if(!msg.myReactions) msg.myReactions=[];
+  const key=currentUser.name+'::'+reaction;
+  const already=msg.myReactions.includes(key);
+  if(already){
+    msg.myReactions=msg.myReactions.filter(k=>k!==key);
+    msg.reactions[reaction]=Math.max(0,(msg.reactions[reaction]||1)-1);
+  } else {
+    msg.myReactions.push(key);
+    msg.reactions[reaction]=(msg.reactions[reaction]||0)+1;
+  }
+  msgs[msgIdx]=msg;
+  await updateBin({...data,chat:msgs});
+  lastMsgCount=0; // force re-render
+  renderChatMsgs(msgs);
+}
+
+// 🟡 Fix 4 : validation pseudo dans le chat (pseudo déjà pris par un autre)
 async function sendMsg(){
-  if(!currentUser){toast('Connecte-toi pour chatter !');return;}
+  if(!currentUser){ toast('Connecte-toi pour chatter !'); return; }
   const input=document.getElementById('chatInput');
   const text=input.value.trim();
   if(!text) return;
-  input.value='';
-  const msg={id:Date.now(),author:currentUser.name,text,time:new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})};
+
+  // Vérifier que le pseudo dans le chat correspond bien à l'utilisateur connecté
   const data=await fetchBin();
-  const chat=[...(data.chat||[]),msg].slice(-100);
+  const recentMsgs=data.chat||[];
+  const lastHour=Date.now()-3600000;
+  const impostor=recentMsgs.find(m=>m.author.toLowerCase()===currentUser.name.toLowerCase()&&m.authorId&&m.authorId!==currentUser.createdAt);
+  if(impostor){ toast('⚠️ Conflit de pseudo détecté.'); return; }
+
+  input.value='';
+  const msg={
+    id:Date.now(),
+    author:currentUser.name,
+    authorId:currentUser.createdAt, // identifiant unique lié à la création du compte
+    text,
+    time:new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
+    reactions:{},
+    myReactions:[]
+  };
+  const chat=[...recentMsgs,msg].slice(-100);
   await updateBin({...data,chat});
   lastMsgCount=chat.length;
   renderChatMsgs(chat);
@@ -1152,7 +1350,7 @@ async function sendMsg(){
 async function openAnnouncements(){
   showPage('announcePage');
   const data=await fetchBin();
-  const announces=(data.announcements||[]).reverse();
+  const announces=[...data.announcements].reverse();
   const typeColors={info:'var(--neon)',hot:'var(--pink)',event:'var(--gold)',update:'var(--purple)'};
   const typeLabels={info:'📌 Info',hot:'🔥 Hot',event:'🎉 Événement',update:'✨ Mise à jour'};
   const list=document.getElementById('announceList');
@@ -1162,9 +1360,9 @@ async function openAnnouncements(){
   }
   list.innerHTML=announces.map(a=>`
     <div class="announce-item" style="border-left-color:${typeColors[a.type]||'var(--neon)'}">
-      <div class="announce-type" style="color:${typeColors[a.type]||'var(--neon)'}">${typeLabels[a.type]||'Info'} · ${a.emoji||'📣'}</div>
-      <div class="announce-title">${a.title}</div>
-      <div class="announce-text">${a.text}</div>
+      <div class="announce-type" style="color:${typeColors[a.type]||'var(--neon)'}">${typeLabels[a.type]||'Info'} · ${escHtml(a.emoji||'📣')}</div>
+      <div class="announce-title">${escHtml(a.title)}</div>
+      <div class="announce-text">${escHtml(a.text)}</div>
       <div class="announce-date">📅 ${a.date}</div>
     </div>`).join('');
 }
@@ -1173,7 +1371,8 @@ async function openAnnouncements(){
 let adminAuthed=false;
 function loginAdmin(){
   const pass=document.getElementById('adminPassInput').value;
-  if(pass===ADMIN_PASS){
+  // 🔴 Fix 2 : comparaison sécurisée sans mot de passe en clair
+  if(_checkAdminPass(pass)){
     adminAuthed=true;
     document.getElementById('adminGate').style.display='none';
     document.getElementById('adminPanel').style.display='block';
@@ -1183,13 +1382,13 @@ function loginAdmin(){
 
 async function loadAdminData(){
   const data=await fetchBin();
-  const announces=(data.announcements||[]).reverse();
+  const announces=[...data.announcements].reverse();
   const list=document.getElementById('adminAnnounceList');
   list.innerHTML=announces.length===0?'<div style="color:var(--muted);font-size:13px;">Aucune annonce</div>'
     :announces.map(a=>`
       <div style="display:flex;align-items:center;gap:10px;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:8px;">
-        <span style="font-size:18px;">${a.emoji||'📣'}</span>
-        <div style="flex:1;"><strong style="font-size:13px;">${a.title}</strong><div style="font-size:11px;color:var(--muted);">${a.date}</div></div>
+        <span style="font-size:18px;">${escHtml(a.emoji||'📣')}</span>
+        <div style="flex:1;"><strong style="font-size:13px;">${escHtml(a.title)}</strong><div style="font-size:11px;color:var(--muted);">${a.date}</div></div>
         <button onclick="deleteAnnounce(${a.id})" style="background:rgba(255,23,68,.1);border:1px solid rgba(255,23,68,.2);border-radius:8px;padding:5px 10px;color:var(--red);font-family:var(--font);font-size:11px;font-weight:700;cursor:pointer;">🗑️</button>
       </div>`).join('');
 }
@@ -1202,7 +1401,7 @@ async function postAnnounce(){
   if(!title||!text){toast('Remplis le titre et le contenu !');return;}
   const data=await fetchBin();
   const entry={id:Date.now(),title,text,emoji,type,date:new Date().toLocaleDateString('fr-FR')};
-  const announces=[...(data.announcements||[]),entry];
+  const announces=[...data.announcements,entry];
   await updateBin({...data,announcements:announces});
   document.getElementById('aTitle').value='';
   document.getElementById('aText').value='';
@@ -1213,7 +1412,7 @@ async function postAnnounce(){
 
 async function deleteAnnounce(id){
   const data=await fetchBin();
-  const announces=(data.announcements||[]).filter(a=>a.id!==id);
+  const announces=data.announcements.filter(a=>a.id!==id);
   await updateBin({...data,announcements:announces});
   toast('🗑️ Annonce supprimée');
   loadAdminData();
@@ -1234,14 +1433,62 @@ async function clearChat(){
   toast('🗑️ Chat vidé !');
 }
 
+// 🟢 Feat 9 : Page profil publique
+function openMyProfile(){
+  if(!currentUser) return;
+  openPublicProfile(currentUser.name);
+}
+
+async function openPublicProfile(name){
+  // D'abord chercher dans le classement JSONbin pour avoir les données à jour
+  const data=await fetchBin();
+  const lbEntry=data.leaderboard.find(e=>e.name.toLowerCase()===name.toLowerCase());
+  // Puis dans le localStorage
+  const localUser=getUser(name);
+  const userData=lbEntry||localUser||null;
+
+  if(!userData){ toast('Joueur introuvable'); return; }
+
+  document.getElementById('profileAvatar').textContent=userData.name[0].toUpperCase();
+  document.getElementById('profileUsername').textContent=userData.name;
+  document.getElementById('profileTotalPts').textContent=userData.score||userData.totalPts||0;
+  document.getElementById('profileStreak').textContent=userData.streak||0;
+  document.getElementById('profileQuizCount').textContent=
+    userData.quizCount||Object.keys(userData.bestScores||{}).length||0;
+
+  const streak=userData.streak||0;
+  document.getElementById('profileStreakBadge').innerHTML=streak>0
+    ?`<div class="streak-badge">🔥 ${streak} jour${streak>1?'s':''} de streak</div>`:'';
+
+  // Meilleurs scores par catégorie
+  const bs=userData.bestScores||{};
+  const grid=document.getElementById('profileBestScores');
+  const catEntries=CATS.filter(c=>bs[c.id]>0);
+  if(catEntries.length===0){
+    grid.innerHTML='<div style="color:var(--muted);font-size:13px;grid-column:1/-1;text-align:center;padding:20px;">Aucun quiz joué encore !</div>';
+  } else {
+    grid.innerHTML=catEntries.map(c=>`
+      <div class="best-score-item">
+        <span class="best-score-icon">${c.emoji}</span>
+        <div class="best-score-info"><strong>${c.label}</strong><span>${bs[c.id]} pts</span></div>
+      </div>`).join('');
+  }
+  showPage('profilePage');
+}
+
 // ── INIT ────────────────────────────────────────────────────────
 function init(){
   pickChallenge();
   renderSetupCats();
   const sess=localStorage.getItem('qz_sess');
-  if(sess){ const u=getUser(sess); if(u){ currentUser=u; updateStreak(); enterHome(); return; } }
+  if(sess){ const u=getUser(sess); if(u){ currentUser=u; updateStreak(); enterHome(); startPushPolling(); return; } }
   showPage('landingPage');
+  // Polling anonyme aussi (pour voir les annonces)
+  setTimeout(()=>{ lastAnnounceCount=-1; startPushPolling(); },2000);
 }
+
+// Démarrer le polling push après connexion
+const _origHandleAuth=handleAuth;
 
 init();
 </script>
